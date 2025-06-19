@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+html {
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  @apply bg-bg-base text-text-primary;
+  line-height: 1.5;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5 {
+  @apply text-text-primary;
+  font-weight: 600;
+} 
