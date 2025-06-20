@@ -44,7 +44,6 @@
     "promote:prod": "cross-env GITHUB_REF_NAME=staging node scripts/ci-automation.js",
     "deploy": "node scripts/deploy.js",
     "deploy:quick": "node scripts/deploy-quick.js",
-    "prepare": "husky install",
     "auto-heal": "node scripts/auto-heal.js",
     "auto-heal:watch": "nodemon scripts/auto-heal.js",
     "pre-push": "npm run auto-heal",
