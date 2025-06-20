@@ -54,6 +54,17 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   }, [])
 
+  // Check if Clerk is properly configured
+  const isClerkConfigured = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY && 
+    process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY !== 'your_clerk_key' &&
+    process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY !== 'pk_test_your_clerk_publishable_key'
+
+  // If Clerk is not configured, render without authentication
+  if (!isClerkConfigured) {
+    return <Component {...pageProps} />
+  }
+
+  // If Clerk is configured, wrap with ClerkProvider
   return (
     <ClerkProvider {...pageProps}>
       <Component {...pageProps} />
