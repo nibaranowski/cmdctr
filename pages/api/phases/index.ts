@@ -24,7 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       filteredPhases.sort((a, b) => a.order - b.order);
       
       res.status(200).json(filteredPhases);
-    } catch (error) {
+    } catch {
       res.status(500).json({ error: 'Failed to fetch phases' });
     }
   } else if (req.method === 'POST') {
@@ -47,7 +47,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       phases.push(newPhase);
       
       res.status(201).json(newPhase);
-    } catch (error) {
+    } catch {
       res.status(500).json({ error: 'Failed to create phase' });
     }
   } else {

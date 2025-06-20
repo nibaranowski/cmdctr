@@ -1,6 +1,7 @@
 import { createMocks } from 'node-mocks-http';
-import handler from '../../../pages/api/agents/execute';
+
 import { AgentOrchestrator } from '../../../lib/agents/orchestrator';
+import handler from '../../../pages/api/agents/execute';
 
 describe('/api/agents/execute', () => {
   it('returns 405 for non-POST methods', async () => {

@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>8/8</span>
+                <span class='fraction'>0/8</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>0/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>8/8</span>
+                <span class='fraction'>0/8</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -282,12 +282,12 @@
 <a name='L217'></a><a href='#L217'>217</a>
 <a name='L218'></a><a href='#L218'>218</a>
 <a name='L219'></a><a href='#L219'>219</a>
-<a name='L220'></a><a href='#L220'>220</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L220'></a><a href='#L220'>220</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -320,7 +320,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -411,7 +411,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -435,7 +435,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -501,12 +501,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Head from 'next/head'
-import Link from 'next/link'
-import React from 'react'
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Head from <span class="cstat-no" title="statement not covered" >'next/head'</span>
+import Link from <span class="cstat-no" title="statement not covered" >'next/link'</span>
+import React from <span class="cstat-no" title="statement not covered" >'react'</span>
 &nbsp;
-export default function Homepage() {
-  const features = [
+export default function <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >Homepage() {</span></span>
+  const features = <span class="cstat-no" title="statement not covered" >[</span>
     {
       icon: "👥",
       title: "Hiring",
@@ -539,7 +539,7 @@ export default function Homepage() {
     }
   ];
 &nbsp;
-  const integrations = [
+  const integrations = <span class="cstat-no" title="statement not covered" >[</span>
     { name: "Slack", logo: "💬" },
     { name: "GitHub", logo: "🐙" },
     { name: "Notion", logo: "📝" },
@@ -629,8 +629,8 @@ export default function Homepage() {
           &lt;/div&gt;
           
           &lt;div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"&gt;
-            {features.map((feature, index) =&gt; (
-              &lt;div key={index} className="bg-white rounded-xl p-8 shadow-sm border border-gray-200 hover:shadow-md transition-shadow"&gt;
+            {features.map(<span class="fstat-no" title="function not covered" >(f</span>eature, index) =&gt; (
+<span class="cstat-no" title="statement not covered" >              &lt;div key={index} c</span>lassName="bg-white rounded-xl p-8 shadow-sm border border-gray-200 hover:shadow-md transition-shadow"&gt;
                 &lt;div className="text-4xl mb-4"&gt;{feature.icon}&lt;/div&gt;
                 &lt;h3 className="text-xl font-semibold text-gray-900 mb-3"&gt;{feature.title}&lt;/h3&gt;
                 &lt;p className="text-gray-600 leading-relaxed"&gt;{feature.description}&lt;/p&gt;
@@ -653,8 +653,8 @@ export default function Homepage() {
           &lt;/div&gt;
           
           &lt;div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 items-center"&gt;
-            {integrations.map((integration, index) =&gt; (
-              &lt;div key={index} className="flex flex-col items-center"&gt;
+            {integrations.map(<span class="fstat-no" title="function not covered" >(i</span>ntegration, index) =&gt; (
+<span class="cstat-no" title="statement not covered" >              &lt;div key={index} c</span>lassName="flex flex-col items-center"&gt;
                 &lt;div className="text-3xl mb-2"&gt;{integration.logo}&lt;/div&gt;
                 &lt;span className="text-sm text-gray-600 font-medium"&gt;{integration.name}&lt;/span&gt;
               &lt;/div&gt;
@@ -727,7 +727,7 @@ export default function Homepage() {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-20T11:38:15.917Z
+                at 2025-06-20T18:04:45.037Z
             </div>
         <script src="../prettify.js"></script>
         <script>

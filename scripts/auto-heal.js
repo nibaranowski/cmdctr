@@ -2,7 +2,9 @@ const { exec } = require('child_process');
 const { promisify } = require('util');
 const fs = require('fs').promises;
 const path = require('path');
+
 const { Octokit } = require('@octokit/rest');
+
 const AutoFixPatterns = require('./auto-fix-patterns');
 
 const execAsync = promisify(exec);
@@ -178,7 +180,7 @@ class AutoHealer {
       // Try auto-fixing with eslint
       await execAsync(`npx eslint ${issue.file} --fix`);
       console.log(`✅ Auto-fixed lint issues in ${issue.file}`);
-    } catch (error) {
+    } catch {
       console.log(`❌ Could not auto-fix all lint issues in ${issue.file}`);
     }
   }
@@ -260,7 +262,7 @@ describe('${path.basename(file)}', () => {
       
       console.log('✅ All fixes verified successfully!');
       return true;
-    } catch (error) {
+    } catch {
       if (this.testsRun < this.maxAttempts) {
         this.testsRun++;
         console.log(`\n🔄 Some issues remain. Attempt ${this.testsRun}/${this.maxAttempts}`);
@@ -368,7 +370,7 @@ describe('${path.basename(file)}', () => {
         inFailingTest = true;
       }
       if (inFailingTest) {
-        testBlock += line + '\n';
+        testBlock += `${line  }\n`;
         if (line.includes('});')) {
           break;
         }
@@ -400,7 +402,7 @@ describe('${path.basename(file)}', () => {
         inFunction = true;
       }
       if (inFunction) {
-        functionCode += line + '\n';
+        functionCode += `${line  }\n`;
         if (line.includes('}')) {
           break;
         }

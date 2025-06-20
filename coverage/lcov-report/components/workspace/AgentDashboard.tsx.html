@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/104</span>
+                <span class='fraction'>0/102</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/54</span>
+                <span class='fraction'>0/52</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/100</span>
+                <span class='fraction'>0/98</span>
             </div>
         
             
@@ -706,11 +706,7 @@
 <a name='L641'></a><a href='#L641'>641</a>
 <a name='L642'></a><a href='#L642'>642</a>
 <a name='L643'></a><a href='#L643'>643</a>
-<a name='L644'></a><a href='#L644'>644</a>
-<a name='L645'></a><a href='#L645'>645</a>
-<a name='L646'></a><a href='#L646'>646</a>
-<a name='L647'></a><a href='#L647'>647</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L644'></a><a href='#L644'>644</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -801,7 +797,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -956,7 +951,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1357,7 +1351,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState, useEffect } from <span class="cstat-no" title="statement not covered" >'react';</span>
 &nbsp;
-import { AgentOrchestrator } from '../../lib/agents/orchestrator';
 import { AgentRegistry } from <span class="cstat-no" title="statement not covered" >'../../lib/agents/registry';</span>
 import { Agent } from '../../models/Agent';
 &nbsp;
@@ -1449,7 +1442,6 @@ export const <span class="cstat-no" title="statement not covered" >AgentDashboar
 &nbsp;
   const getStatusColor = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(s</span>tatus: Agent['status']) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    switch (status) {</span>
-      case 'active': <span class="cstat-no" title="statement not covered" >return 'bg-green-500';</span>
       case 'idle': <span class="cstat-no" title="statement not covered" >return 'bg-gray-500';</span>
       case 'busy': <span class="cstat-no" title="statement not covered" >return 'bg-yellow-500';</span>
       case 'error': <span class="cstat-no" title="statement not covered" >return 'bg-red-500';</span>
@@ -1459,8 +1451,8 @@ export const <span class="cstat-no" title="statement not covered" >AgentDashboar
     }
   };
 &nbsp;
-  const getAgentTypeIcon = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(t</span>ype: Agent['agent_type']) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    switch (type) {</span>
+  const getAgentTypeIcon = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(a</span>gentType: Agent['agent_type']) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    switch (agentType) {</span>
       case 'ai': <span class="cstat-no" title="statement not covered" >return '🤖';</span>
       case 'human': <span class="cstat-no" title="statement not covered" >return '👤';</span>
       case 'hybrid': <span class="cstat-no" title="statement not covered" >return '🔗';</span>
@@ -1605,7 +1597,6 @@ interface AgentCardProps {
 const AgentCard: React.FC&lt;AgentCardProps&gt; = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span> agent, onSelect, onStatusUpdate }) =&gt; {</span>
   const getStatusColor = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(s</span>tatus: Agent['status']) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    switch (status) {</span>
-      case 'active': <span class="cstat-no" title="statement not covered" >return 'bg-green-500';</span>
       case 'idle': <span class="cstat-no" title="statement not covered" >return 'bg-gray-500';</span>
       case 'busy': <span class="cstat-no" title="statement not covered" >return 'bg-yellow-500';</span>
       case 'error': <span class="cstat-no" title="statement not covered" >return 'bg-red-500';</span>
@@ -1615,8 +1606,8 @@ const AgentCard: React.FC&lt;AgentCardProps&gt; = <span class="cstat-no" title="
     }
   };
 &nbsp;
-  const getAgentTypeIcon = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(t</span>ype: Agent['agent_type']) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    switch (type) {</span>
+  const getAgentTypeIcon = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(a</span>gentType: Agent['agent_type']) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    switch (agentType) {</span>
       case 'ai': <span class="cstat-no" title="statement not covered" >return '🤖';</span>
       case 'human': <span class="cstat-no" title="statement not covered" >return '👤';</span>
       case 'hybrid': <span class="cstat-no" title="statement not covered" >return '🔗';</span>
@@ -1721,8 +1712,8 @@ interface AgentCreationModalProps {
   onClose: () =&gt; void;
   onCreate: (template: string, agentData: any) =&gt; void;
   companyId: string;
-  metaboxId?: string;
-  phaseId?: string;
+  metaboxId?: string | undefined;
+  phaseId?: string | undefined;
 }
 &nbsp;
 const AgentCreationModal: React.FC&lt;AgentCreationModalProps&gt; = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span></span>
@@ -2008,7 +1999,7 @@ const AgentDetailModal: React.FC&lt;AgentDetailModalProps&gt; = <span class="cst
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-20T11:38:15.917Z
+                at 2025-06-20T18:04:45.037Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

@@ -70,7 +70,7 @@ async function deployQuick() {
       logStep('Switching to main branch...');
       execSync('git checkout main', { stdio: 'inherit' });
     }
-  } catch (error) {
+  } catch {
     logWarning('Could not verify git branch, continuing anyway...');
   }
 
@@ -83,7 +83,7 @@ async function deployQuick() {
       execSync('git add .', { stdio: 'inherit' });
       execSync('git commit -m "🚀 Quick deploy - bypassing tests"', { stdio: 'inherit' });
     }
-  } catch (error) {
+  } catch {
     logWarning('Could not check git status, continuing anyway...');
   }
 
@@ -142,7 +142,7 @@ async function deployQuick() {
   try {
     execSync('vercel --prod --yes', { stdio: 'inherit' });
     logSuccess('Deployment to Vercel completed successfully!');
-  } catch (error) {
+  } catch {
     logError('Vercel deployment failed!');
     logStep('Trying alternative deployment method...');
     
@@ -174,7 +174,7 @@ async function deployQuick() {
         logWarning('Health check failed - this is normal for new deployments');
       }
     }, 5000); // Wait 5 seconds for deployment to settle
-  } catch (error) {
+  } catch {
     logWarning('Could not run health check');
   }
 }

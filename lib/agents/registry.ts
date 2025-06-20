@@ -1,5 +1,3 @@
-import { Agent, AgentCreateInput, AgentFilter } from '../../models/Agent';
-
 import { BaseAgent } from './BaseAgent';
 import { AIOutreachAgent } from './fundraising/AIOutreachAgent';
 import { InvestorResearchAgent } from './fundraising/InvestorResearchAgent';

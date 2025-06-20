@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import { AgentOrchestrator } from '../../lib/agents/orchestrator';
 import { AgentRegistry } from '../../lib/agents/registry';
 import { Agent } from '../../models/Agent';
 
@@ -92,7 +91,6 @@ export const AgentDashboard: React.FC<AgentDashboardProps> = ({
 
   const getStatusColor = (status: Agent['status']) => {
     switch (status) {
-      case 'active': return 'bg-green-500';
       case 'idle': return 'bg-gray-500';
       case 'busy': return 'bg-yellow-500';
       case 'error': return 'bg-red-500';
@@ -102,8 +100,8 @@ export const AgentDashboard: React.FC<AgentDashboardProps> = ({
     }
   };
 
-  const getAgentTypeIcon = (type: Agent['agent_type']) => {
-    switch (type) {
+  const getAgentTypeIcon = (agentType: Agent['agent_type']) => {
+    switch (agentType) {
       case 'ai': return '🤖';
       case 'human': return '👤';
       case 'hybrid': return '🔗';
@@ -248,7 +246,6 @@ interface AgentCardProps {
 const AgentCard: React.FC<AgentCardProps> = ({ agent, onSelect, onStatusUpdate }) => {
   const getStatusColor = (status: Agent['status']) => {
     switch (status) {
-      case 'active': return 'bg-green-500';
       case 'idle': return 'bg-gray-500';
       case 'busy': return 'bg-yellow-500';
       case 'error': return 'bg-red-500';
@@ -258,8 +255,8 @@ const AgentCard: React.FC<AgentCardProps> = ({ agent, onSelect, onStatusUpdate }
     }
   };
 
-  const getAgentTypeIcon = (type: Agent['agent_type']) => {
-    switch (type) {
+  const getAgentTypeIcon = (agentType: Agent['agent_type']) => {
+    switch (agentType) {
       case 'ai': return '🤖';
       case 'human': return '👤';
       case 'hybrid': return '🔗';
@@ -364,8 +361,8 @@ interface AgentCreationModalProps {
   onClose: () => void;
   onCreate: (template: string, agentData: any) => void;
   companyId: string;
-  metaboxId?: string;
-  phaseId?: string;
+  metaboxId?: string | undefined;
+  phaseId?: string | undefined;
 }
 
 const AgentCreationModal: React.FC<AgentCreationModalProps> = ({

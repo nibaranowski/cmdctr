@@ -166,7 +166,7 @@ class AutoFixPatterns {
     
     return {
       type: 'added',
-      fix: line + ';',
+      fix: `${line  };`,
       message: `Added semicolon to ${line}`
     };
   }
@@ -324,7 +324,7 @@ describe('${moduleName}', () => {
             );
           } else if (fix.import) {
             // Add import statement
-            content = fix.import + '\n' + content;
+            content = `${fix.import  }\n${  content}`;
           }
           break;
           

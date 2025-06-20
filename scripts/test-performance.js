@@ -1,6 +1,7 @@
-const autocannon = require('autocannon');
 const { spawn } = require('child_process');
 const { promisify } = require('util');
+
+const autocannon = require('autocannon');
 
 const SLA_THRESHOLDS = {
   api: 300,  // 300ms

@@ -2,9 +2,9 @@
 
 // Visual Test Dashboard
 // Shows real-time status of all test suites across environments
+const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
 
 // ANSI color codes for terminal output
 const colors = {
@@ -168,9 +168,9 @@ class TestDashboard {
     const stagingPassed = this.checkEnvironmentGate('staging');
     const prodPassed = this.checkEnvironmentGate('production');
     
-    console.log(`🔄 Dev → Staging: ${devPassed ? colors.green + '✅ OPEN' : colors.red + '❌ BLOCKED' + colors.reset}`);
-    console.log(`🔄 Staging → Prod: ${stagingPassed ? colors.green + '✅ OPEN' : colors.red + '❌ BLOCKED' + colors.reset}`);
-    console.log(`🔄 Production Ready: ${prodPassed ? colors.green + '✅ YES' : colors.red + '❌ NO' + colors.reset}`);
+    console.log(`🔄 Dev → Staging: ${devPassed ? `${colors.green  }✅ OPEN` : `${colors.red  }❌ BLOCKED${  colors.reset}`}`);
+    console.log(`🔄 Staging → Prod: ${stagingPassed ? `${colors.green  }✅ OPEN` : `${colors.red  }❌ BLOCKED${  colors.reset}`}`);
+    console.log(`🔄 Production Ready: ${prodPassed ? `${colors.green  }✅ YES` : `${colors.red  }❌ NO${  colors.reset}`}`);
     
     // Summary
     console.log(`\n${colors.bold}${colors.cyan}SUMMARY${colors.reset}`);

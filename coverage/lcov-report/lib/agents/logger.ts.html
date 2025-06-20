@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">12.98% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/77</span>
+                <span class='fraction'>0/77</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">5.26% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/38</span>
+                <span class='fraction'>0/38</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">12.5% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/16</span>
+                <span class='fraction'>0/16</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">11.84% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/76</span>
+                <span class='fraction'>0/76</span>
             </div>
         
             
@@ -315,23 +315,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -342,8 +342,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -513,7 +513,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">14x</span></td><td class="text"><pre class="prettyprint lang-js">export type LogLevel = 'info' | 'warn' | 'error' | 'debug';
+<span class="cline-any cline-no">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export type LogLevel = 'info' | 'warn' | 'error' | 'debug';
 &nbsp;
 interface PerformanceMetric {
   operation: string;
@@ -540,23 +540,23 @@ interface AgentMetrics {
 }
 &nbsp;
 class Logger {
-  private level: LogLevel = 'info';
-  private performanceMetrics: PerformanceMetric[] = [];
-  private taskMetrics: TaskMetrics = {
+  private <span class="cstat-no" title="statement not covered" >level: LogLevel = 'info';</span>
+  private <span class="cstat-no" title="statement not covered" >performanceMetrics: PerformanceMetric[] = [];</span>
+  private <span class="cstat-no" title="statement not covered" >taskMetrics: TaskMetrics = {</span>
     total_tasks: 0,
     tasks_by_status: {},
     average_completion_time: 0,
     queue_length: 0
   };
-  private agentMetrics: Map&lt;string, AgentMetrics&gt; = new Map();
+  private <span class="cstat-no" title="statement not covered" >agentMetrics: Map&lt;string, AgentMetrics&gt; = new Map();</span>
 &nbsp;
 <span class="fstat-no" title="function not covered" >  setLevel(l</span>evel: LogLevel) {
 <span class="cstat-no" title="statement not covered" >    this.level = level;</span>
   }
 &nbsp;
-  info(message: string, ...args: any[]) {
-    if (['info', 'debug'].includes(this.level)) {
-      console.info(`[INFO] ${message}`, ...args);
+<span class="fstat-no" title="function not covered" >  info(m</span>essage: string, ...args: any[]) {
+<span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (['info', 'debug'].includes(this.level)) {</span>
+<span class="cstat-no" title="statement not covered" >      console.info(`[INFO] ${message}`, ...args);</span>
     }
   }
 &nbsp;
@@ -566,9 +566,9 @@ class Logger {
     }
   }
 &nbsp;
-  error(message: string, ...args: any[]) {
-    if (['error', 'warn', 'info', 'debug'].includes(this.level)) {
-      console.error(`[ERROR] ${message}`, ...args);
+<span class="fstat-no" title="function not covered" >  error(m</span>essage: string, ...args: any[]) {
+<span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (['error', 'warn', 'info', 'debug'].includes(this.level)) {</span>
+<span class="cstat-no" title="statement not covered" >      console.error(`[ERROR] ${message}`, ...args);</span>
     }
   }
 &nbsp;
@@ -738,14 +738,14 @@ class Logger {
   }
 }
 &nbsp;
-export const logger = new Logger(); </pre></td></tr></table></pre>
+export const <span class="cstat-no" title="statement not covered" >logger = <span class="cstat-no" title="statement not covered" >n</span>ew Logger(); </span></pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-20T11:38:15.917Z
+                at 2025-06-20T18:04:45.037Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

@@ -340,7 +340,7 @@ describe('${className}', () => {
           files.push(fullPath);
         }
       }
-    } catch (error) {
+    } catch {
       // Directory doesn't exist, skip
     }
     
@@ -357,7 +357,7 @@ describe('${className}', () => {
       try {
         await fs.access(testFile);
         // Test file exists
-      } catch (error) {
+      } catch {
         // Test file doesn't exist
         missingTests.push(sourceFile);
       }

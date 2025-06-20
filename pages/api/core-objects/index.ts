@@ -1,7 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { CoreObjectSchema, CoreObjectCreateInput, CoreObjectFilter } from '../../../models/CoreObject';
-
 // Mock database - replace with actual database connection
 const coreObjects: any[] = [];
 
@@ -31,7 +29,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       }
       
       res.status(200).json(filteredObjects);
-    } catch (error) {
+    } catch {
       res.status(500).json({ error: 'Failed to fetch core objects' });
     }
   } else if (req.method === 'POST') {
@@ -56,7 +54,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       coreObjects.push(newCoreObject);
       
       res.status(201).json(newCoreObject);
-    } catch (error) {
+    } catch {
       res.status(500).json({ error: 'Failed to create core object' });
     }
   } else {

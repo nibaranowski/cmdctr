@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 
 import { logInfo, logError } from '../lib/betterstack'
 import '../styles/globals.css'
+import '../styles/design-system.css'
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {

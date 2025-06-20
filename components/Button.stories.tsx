@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
 import Button from './Button';
 
@@ -27,27 +27,31 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     variant: 'primary',
-    children: 'Button',
+    size: 'medium',
+    children: 'Primary Button',
   },
 };
 
 export const Secondary: Story = {
   args: {
     variant: 'secondary',
-    children: 'Button',
+    size: 'medium',
+    children: 'Secondary Button',
   },
 };
 
 export const Large: Story = {
   args: {
+    variant: 'primary',
     size: 'large',
-    children: 'Button',
+    children: 'Large Button',
   },
 };
 
 export const Small: Story = {
   args: {
+    variant: 'primary',
     size: 'small',
-    children: 'Button',
+    children: 'Small Button',
   },
 }; 

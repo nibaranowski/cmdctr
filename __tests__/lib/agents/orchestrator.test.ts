@@ -1,7 +1,7 @@
 import { AgentOrchestrator } from '../../../lib/agents/orchestrator';
-import { AgentContext, AgentResult, MetaBoxConfig, AgentManifest } from '../../../lib/agents/types';
 import * as registry from '../../../lib/agents/registry';
 import { AgentRegistry } from '../../../lib/agents/registry';
+import { AgentContext, AgentResult, MetaBoxConfig, AgentManifest } from '../../../lib/agents/types';
 
 // Mock the registry module
 jest.mock('../../../lib/agents/registry');

@@ -1,112 +1,97 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-import { WorkspaceLayout, Phase, KanbanColumn, KanbanItem, Agent } from '../components/workspace/WorkspaceLayout';
+import { KanbanBoard, KanbanColumn as KanbanColumnType, KanbanCard as KanbanCardType } from '../components/workspace/KanbanBoard';
 
-// Sample data for the demo
-const sampleAgents: Agent[] = [
+// Demo data
+const demoColumns: KanbanColumnType[] = [
+  { id: 'col-1', title: 'To Do', order: 1, color: '#3B82F6' },
+  { id: 'col-2', title: 'In Progress', order: 2, color: '#F59E0B' },
+  { id: 'col-3', title: 'Done', order: 3, color: '#10B981' }
+];
+
+const demoCards: KanbanCardType[] = [
   {
-    id: '1',
-    name: 'Sarah Chen',
-    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=32&h=32&fit=crop&crop=face',
-    status: 'online',
-    role: 'Research Lead'
+    id: 'card-1',
+    title: 'Implement drag and drop',
+    description: 'Add drag and drop functionality to the Kanban board',
+    status: 'todo',
+    priority: 'high',
+    columnId: 'col-1',
+    tags: ['feature', 'ui'],
+    assignee: 'John Doe',
+    dueDate: '2024-01-15'
   },
   {
-    id: '2',
-    name: 'Mike Johnson',
-    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face',
-    status: 'busy',
-    role: 'Analyst'
+    id: 'card-2',
+    title: 'Add keyboard navigation',
+    description: 'Implement keyboard shortcuts for navigation',
+    status: 'in-progress',
+    priority: 'medium',
+    columnId: 'col-2',
+    tags: ['accessibility'],
+    assignee: 'Jane Smith',
+    dueDate: '2024-01-20'
   },
   {
-    id: '3',
-    name: 'Emma Davis',
-    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=32&h=32&fit=crop&crop=face',
-    status: 'online',
-    role: 'Communications'
+    id: 'card-3',
+    title: 'Write tests',
+    description: 'Add comprehensive test coverage',
+    status: 'done',
+    priority: 'low',
+    columnId: 'col-3',
+    tags: ['testing'],
+    assignee: 'Bob Johnson',
+    dueDate: '2024-01-10'
   }
 ];
 
-const sarahChen = sampleAgents[0]!;
-const mikeJohnson = sampleAgents[1]!;
-const emmaDavis = sampleAgents[2]!;
-
-const sampleColumns: KanbanColumn[] = [
-  {
-    id: 'todo',
-    title: 'To Do',
-    items: [],
-    phaseId: 'phase-2'
-  },
-  {
-    id: 'in-progress',
-    title: 'In Progress',
-    items: [],
-    phaseId: 'phase-2'
-  },
-  {
-    id: 'completed',
-    title: 'Completed',
-    items: [],
-    phaseId: 'phase-1'
-  }
-];
-
-const WorkspaceDemo: React.FC = () => {
-  const [phases, setPhases] = useState<Phase[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  const fetchPhases = async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const res = await fetch('/api/phases');
-      if (!res.ok) throw new Error('Failed to fetch phases');
-      const data = await res.json();
-      setPhases(data);
-    } catch (err: any) {
-      setError(err.message || 'Unknown error');
-    } finally {
-      setLoading(false);
-    }
+export default function WorkspaceDemo() {
+  const handleCardMove = async (cardId: string, targetColumnId: string, position: number) => {
+    console.log('Moving card:', cardId, 'to column:', targetColumnId, 'at position:', position);
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 100));
   };
 
-  useEffect(() => {
-    fetchPhases();
-  }, []);
-
-  const onAddPhase = async () => {
-    const name = window.prompt('Enter phase name:');
-    if (!name) return;
-    try {
-      setLoading(true);
-      const res = await fetch('/api/phases', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name }),
-      });
-      if (!res.ok) throw new Error('Failed to add phase');
-      await fetchPhases();
-    } catch (err: any) {
-      setError(err.message || 'Unknown error');
-    } finally {
-      setLoading(false);
-    }
+  const handleCardCreate = async (columnId: string, card: Omit<KanbanCardType, 'id'>) => {
+    console.log('Creating card in column:', columnId, card);
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 100));
   };
 
-  if (loading) return <div className="p-8 text-center">Loading phases...</div>;
-  if (error) return <div className="p-8 text-center text-red-600">Error: {error}</div>;
+  const handleCardUpdate = async (cardId: string, updates: Partial<KanbanCardType>) => {
+    console.log('Updating card:', cardId, updates);
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 100));
+  };
+
+  const handleCardDelete = async (cardId: string) => {
+    console.log('Deleting card:', cardId);
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 100));
+  };
+
+  const handleColumnReorder = async (columnId: string, newOrder: number) => {
+    console.log('Reordering column:', columnId, 'to order:', newOrder);
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 100));
+  };
+
+  const handleCardSelect = (cardId: string) => {
+    console.log('Selected card:', cardId);
+  };
 
   return (
-    <WorkspaceLayout
-      workspaceType="fundraising"
-      title="Fundraising Pipeline"
-      phases={phases}
-      columns={sampleColumns}
-      onAddPhase={onAddPhase}
-    />
+    <div className="h-screen bg-gray-50">
+      <KanbanBoard
+        columns={demoColumns}
+        cards={demoCards}
+        onCardMove={handleCardMove}
+        onCardCreate={handleCardCreate}
+        onCardUpdate={handleCardUpdate}
+        onCardDelete={handleCardDelete}
+        onColumnReorder={handleColumnReorder}
+        onCardSelect={handleCardSelect}
+      />
+    </div>
   );
-};
-
-export default WorkspaceDemo; 
+} 

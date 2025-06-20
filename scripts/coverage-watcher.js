@@ -5,10 +5,11 @@
  * Provides real-time feedback on test coverage status
  */
 
+const { exec } = require('child_process');
 const fs = require('fs');
 const path = require('path');
-const { exec } = require('child_process');
 const { promisify } = require('util');
+
 const chokidar = require('chokidar');
 
 const execAsync = promisify(exec);

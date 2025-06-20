@@ -17,7 +17,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       }
       
       res.status(200).json(coreObject);
-    } catch (error) {
+    } catch {
       res.status(500).json({ error: 'Failed to fetch core object' });
     }
   } else if (req.method === 'PUT') {
@@ -46,7 +46,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       coreObjects[coreObjectIndex] = validationResult.data;
       
       res.status(200).json(validationResult.data);
-    } catch (error) {
+    } catch {
       res.status(500).json({ error: 'Failed to update core object' });
     }
   } else if (req.method === 'DELETE') {
@@ -60,7 +60,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const deletedObject = coreObjects.splice(coreObjectIndex, 1)[0];
       
       res.status(200).json({ message: 'Core object deleted successfully', deletedObject });
-    } catch (error) {
+    } catch {
       res.status(500).json({ error: 'Failed to delete core object' });
     }
   } else {

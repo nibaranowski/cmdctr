@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import { AgentOrchestrator, OrchestrationTask, AgentCollaboration } from '../../lib/agents/orchestrator';
 import { AgentRegistry } from '../../lib/agents/registry';
 
 interface AgentActivityFeedProps {

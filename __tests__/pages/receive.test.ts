@@ -1,4 +1,5 @@
 import { createMocks } from 'node-mocks-http';
+
 import receive from '../../pages/api/agents/scout/receive';
 
 describe('/api/receive', () => {

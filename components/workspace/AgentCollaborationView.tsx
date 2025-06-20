@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import { AgentOrchestrator, AgentCollaboration } from '../../lib/agents/orchestrator';
 import { AgentRegistry } from '../../lib/agents/registry';
 
 interface AgentCollaborationViewProps {

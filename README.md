@@ -115,161 +115,27 @@ SENTRY_AUTH_TOKEN=your_token
 RESEND_API_KEY=re_your_key
 ```
 
+## SMTP/Email Configuration
+
+To enable email sending for magic links and invites, set the following environment variables in your `.env.local` or deployment environment:
+
+```
+SMTP_HOST=smtp.yourprovider.com
+SMTP_PORT=587
+SMTP_USER=your_smtp_username
+SMTP_PASS=your_smtp_password
+EMAIL_FROM=no-reply@cmdctr.com
+```
+
+- `SMTP_HOST`: Your SMTP server hostname (e.g., smtp.sendgrid.net, smtp.gmail.com)
+- `SMTP_PORT`: SMTP port (usually 587 for TLS, 465 for SSL)
+- `SMTP_USER`: SMTP username
+- `SMTP_PASS`: SMTP password
+- `EMAIL_FROM`: The default sender address for all emails
+
+Emails are sent for magic link logins and user invites. Make sure your SMTP credentials are valid and the sender address is authorized by your provider.
+
 ## 🧪 Testing
 
 ### Run All Tests
-```bash
-npm test
 ```
-
-### Run Specific Test Types
-```bash
-# Fast tests (no coverage)
-npm run test:fast
-
-# Unit tests only
-npm run test:unit
-
-# Integration tests
-npm run test:integration
-
-# E2E tests
-npm run test:e2e
-
-# With coverage
-npm run test:coverage
-```
-
-### Quality Checks
-```bash
-# Lint code
-npm run lint
-
-# Format code
-npm run format
-
-# Type checking
-npm run type-check
-
-# All quality checks
-npm run quality:check
-```
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-
-1. **Connect Repository**
-   - Push code to GitHub
-   - Import project in Vercel dashboard
-
-2. **Configure Environment Variables**
-   - Add all required environment variables in Vercel dashboard
-
-3. **Deploy**
-   ```bash
-   npm run build
-   vercel --prod
-   ```
-
-### Manual Deployment
-
-```bash
-# Build for production
-npm run build
-
-# Start production server
-npm start
-```
-
-## 📚 Development Workflow
-
-### 1. Create Feature Branch
-```bash
-git checkout -b feature/your-feature-name
-```
-
-### 2. Make Changes
-- Write code following our [coding standards](CONTRIBUTING.md)
-- Add tests for new functionality
-- Update documentation as needed
-
-### 3. Quality Checks
-```bash
-npm run quality:check
-```
-
-### 4. Commit Changes
-```bash
-npm run commit
-```
-
-### 5. Push and Create PR
-```bash
-git push origin feature/your-feature-name
-```
-
-## 🏗 Project Structure
-
-```
-companyOS/
-├── components/          # Reusable UI components
-├── lib/                # Utility functions and configurations
-├── pages/              # Next.js pages and API routes
-├── styles/             # Global styles and Tailwind config
-├── __tests__/          # Test files
-├── .github/            # GitHub Actions workflows
-├── docs/               # Documentation
-└── scripts/            # Build and deployment scripts
-```
-
-## 🔍 Code Quality
-
-### Linting & Formatting
-- **ESLint**: TypeScript, React, and Next.js rules
-- **Prettier**: Consistent code formatting
-- **Husky**: Pre-commit hooks for quality gates
-
-### Testing Strategy
-- **Unit Tests**: Jest + React Testing Library
-- **Integration Tests**: API route testing
-- **E2E Tests**: Playwright for critical user flows
-- **Coverage**: Minimum 80% coverage required
-
-### Performance
-- **Lighthouse CI**: Performance, SEO, accessibility
-- **Bundle Analysis**: Webpack bundle analyzer
-- **Core Web Vitals**: Real user metrics
-
-## 🤝 Contributing
-
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
-
-### Development Setup
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests
-5. Run quality checks
-6. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🆘 Support
-
-- **Documentation**: [docs/](docs/)
-- **Issues**: [GitHub Issues](https://github.com/nicolasbaranowski/companyOS/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/nicolasbaranowski/companyOS/discussions)
-
-## 🏆 Acknowledgments
-
-- Built with [Next.js](https://nextjs.org/)
-- Styled with [Tailwind CSS](https://tailwindcss.com/)
-- Icons from [Heroicons](https://heroicons.com/)
-- Testing with [Jest](https://jestjs.io/) and [Playwright](https://playwright.dev/)
-
----
-
-**Made with ❤️ by the Command Center team** 

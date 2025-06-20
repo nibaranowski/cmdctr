@@ -4,135 +4,123 @@ import { useState } from 'react';
 
 import { AgentActivityFeed } from '../components/workspace/AgentActivityFeed';
 import { AgentDashboard } from '../components/workspace/AgentDashboard';
-
-interface Card {
-  id: string;
-  title: string;
-  description: string;
-  status: string;
-  priority: 'low' | 'medium' | 'high';
-  assignee: string;
-  dueDate: string;
-  tags: string[];
-}
+import { KanbanBoard, KanbanColumn } from '../components/workspace/KanbanBoard';
+import { KanbanCard } from '../components/workspace/types';
 
 export default function Fundraising() {
-  const [selectedCard, setSelectedCard] = useState<Card | null>(null);
+  const [selectedCard, setSelectedCard] = useState<KanbanCard | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'agents' | 'activity'>('agents');
 
-  const columns = [
+  const columns: KanbanColumn[] = [
     {
       id: 'identify',
       title: 'Identify Investors',
+      order: 1,
       color: 'bg-gray-100',
-      cards: [
-        {
-          id: '1',
-          title: 'Sequoia Capital',
-          description: 'Series A lead investor, $10M target',
-          status: 'identify',
-          priority: 'high' as const,
-          assignee: 'AI Scout',
-          dueDate: '2024-02-15',
-          tags: ['Series A', 'Lead']
-        },
-        {
-          id: '2',
-          title: 'Andreessen Horowitz',
-          description: 'Follow-on investment opportunity',
-          status: 'identify',
-          priority: 'medium' as const,
-          assignee: 'AI Scout',
-          dueDate: '2024-02-20',
-          tags: ['Series A', 'Follow-on']
-        }
-      ]
     },
     {
       id: 'conflict',
       title: 'Conflict Check',
+      order: 2,
       color: 'bg-yellow-100',
-      cards: [
-        {
-          id: '3',
-          title: 'Benchmark Capital',
-          description: 'Portfolio conflict analysis needed',
-          status: 'conflict',
-          priority: 'high' as const,
-          assignee: 'AI Legal',
-          dueDate: '2024-02-18',
-          tags: ['Legal', 'Conflict']
-        }
-      ]
     },
     {
       id: 'outreach',
       title: 'Intro/Outreach',
+      order: 3,
       color: 'bg-blue-100',
-      cards: [
-        {
-          id: '4',
-          title: 'First Round Capital',
-          description: 'Initial outreach and pitch deck sent',
-          status: 'outreach',
-          priority: 'medium' as const,
-          assignee: 'AI Outreach',
-          dueDate: '2024-02-22',
-          tags: ['Outreach', 'Pitch']
-        }
-      ]
     },
     {
       id: 'meeting',
       title: 'Meeting Scheduled',
+      order: 4,
       color: 'bg-purple-100',
-      cards: [
-        {
-          id: '5',
-          title: 'Kleiner Perkins',
-          description: 'Partner meeting scheduled for next week',
-          status: 'meeting',
-          priority: 'high' as const,
-          assignee: 'AI Scheduler',
-          dueDate: '2024-02-25',
-          tags: ['Meeting', 'Partner']
-        }
-      ]
     },
     {
       id: 'negotiation',
       title: 'Negotiation',
+      order: 5,
       color: 'bg-orange-100',
-      cards: [
-        {
-          id: '6',
-          title: 'Accel Partners',
-          description: 'Term sheet under review',
-          status: 'negotiation',
-          priority: 'high' as const,
-          assignee: 'AI Negotiator',
-          dueDate: '2024-03-01',
-          tags: ['Term Sheet', 'Review']
-        }
-      ]
     },
     {
       id: 'closed',
       title: 'Closed',
+      order: 6,
       color: 'bg-green-100',
-      cards: [
-        {
-          id: '7',
-          title: 'Index Ventures',
-          description: 'Deal closed successfully',
-          status: 'closed',
-          priority: 'low' as const,
-          assignee: 'AI Closer',
-          dueDate: '2024-01-30',
-          tags: ['Closed', 'Success']
-        }
-      ]
+    }
+  ];
+
+  const cards: KanbanCard[] = [
+    {
+      id: '1',
+      title: 'Sequoia Capital',
+      columnId: 'identify',
+      description: 'Series A lead investor, $10M target',
+      priority: 'high',
+      assignee: 'AI Scout',
+      dueDate: '2024-02-15',
+      tags: ['Series A', 'Lead']
+    },
+    {
+      id: '2',
+      title: 'Andreessen Horowitz',
+      columnId: 'identify',
+      description: 'Follow-on investment opportunity',
+      priority: 'medium',
+      assignee: 'AI Scout',
+      dueDate: '2024-02-20',
+      tags: ['Series A', 'Follow-on']
+    },
+    {
+      id: '3',
+      title: 'Benchmark Capital',
+      columnId: 'conflict',
+      description: 'Portfolio conflict analysis needed',
+      priority: 'high',
+      assignee: 'AI Legal',
+      dueDate: '2024-02-18',
+      tags: ['Legal', 'Conflict']
+    },
+    {
+      id: '4',
+      title: 'First Round Capital',
+      columnId: 'outreach',
+      description: 'Initial outreach and pitch deck sent',
+      priority: 'medium',
+      assignee: 'AI Outreach',
+      dueDate: '2024-02-22',
+      tags: ['Outreach', 'Pitch']
+    },
+    {
+      id: '5',
+      title: 'Kleiner Perkins',
+      columnId: 'meeting',
+      description: 'Partner meeting scheduled for next week',
+      priority: 'high',
+      assignee: 'AI Scheduler',
+      dueDate: '2024-02-25',
+      tags: ['Meeting', 'Partner']
+    },
+    {
+      id: '6',
+      title: 'Accel Partners',
+      columnId: 'negotiation',
+      description: 'Term sheet under review',
+      priority: 'high',
+      assignee: 'AI Negotiator',
+      dueDate: '2024-03-01',
+      tags: ['Term Sheet', 'Review']
+    },
+    {
+      id: '7',
+      title: 'Index Ventures',
+      columnId: 'closed',
+      description: 'Deal closed successfully',
+      priority: 'low',
+      assignee: 'AI Closer',
+      dueDate: '2024-01-30',
+      tags: ['Closed', 'Success']
     }
   ];
 
@@ -169,23 +157,6 @@ export default function Fundraising() {
     }
   ];
 
-  const agents = [
-    { name: 'AI Scout', status: 'active', tasks: 3 },
-    { name: 'AI Legal', status: 'active', tasks: 2 },
-    { name: 'AI Outreach', status: 'idle', tasks: 1 },
-    { name: 'AI Negotiator', status: 'active', tasks: 1 },
-    { name: 'AI Scheduler', status: 'idle', tasks: 0 }
-  ];
-
-  const getPriorityColor = (priority: string) => {
-    switch (priority) {
-      case 'high': return 'bg-red-500';
-      case 'medium': return 'bg-yellow-500';
-      case 'low': return 'bg-green-500';
-      default: return 'bg-gray-500';
-    }
-  };
-
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'completed': return 'bg-green-500';
@@ -193,6 +164,19 @@ export default function Fundraising() {
       case 'pending': return 'bg-gray-400';
       default: return 'bg-gray-400';
     }
+  };
+
+  const handleCardSelect = (cardId: string) => {
+    const card = cards.find(c => c.id === cardId);
+    if (card) {
+      setSelectedCard(card);
+      setIsDrawerOpen(true);
+    }
+  };
+
+  const handleCardMove = async (cardId: string, targetColumnId: string, position: number) => {
+    // In a real app, this would call an API to update the card
+    console.log(`Moving card ${cardId} to column ${targetColumnId} at position ${position}`);
   };
 
   return (
@@ -287,51 +271,14 @@ export default function Fundraising() {
         </header>
 
         {/* Kanban Board */}
-        <div className="flex-1 overflow-auto p-6">
-          <div className="flex space-x-6 h-full">
-            {columns.map((column) => (
-              <div key={column.id} className="flex-shrink-0 w-80">
-                <div className="bg-white rounded-lg border border-gray-200 h-full flex flex-col">
-                  <div className="p-4 border-b border-gray-200">
-                    <div className="flex items-center justify-between">
-                      <h3 className="font-semibold text-gray-900">{column.title}</h3>
-                      <span className="text-sm text-gray-500">{column.cards.length}</span>
-                    </div>
-                  </div>
-                  <div className="flex-1 p-4 overflow-y-auto">
-                    <div className="space-y-3">
-                      {column.cards.map((card) => (
-                        <div
-                          key={card.id}
-                          className="bg-white border border-gray-200 rounded-lg p-4 cursor-pointer hover:border-blue-300 hover:shadow-sm transition-all"
-                          onClick={() => {
-                            setSelectedCard(card);
-                            setIsDrawerOpen(true);
-                          }}
-                        >
-                          <div className="flex items-start justify-between mb-2">
-                            <h4 className="font-medium text-gray-900 text-sm">{card.title}</h4>
-                            <div className={`w-3 h-3 rounded-full ${getPriorityColor(card.priority)}`}></div>
-                          </div>
-                          <p className="text-xs text-gray-600 mb-3">{card.description}</p>
-                          <div className="flex items-center justify-between">
-                            <span className="text-xs text-gray-500">{card.assignee}</span>
-                            <div className="flex space-x-1">
-                              {card.tags.map((tag) => (
-                                <span key={tag} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
-                                  {tag}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="flex-1 overflow-hidden">
+          <KanbanBoard
+            columns={columns}
+            cards={cards}
+            onCardSelect={handleCardSelect}
+            onCardMove={handleCardMove}
+            {...(selectedCard?.id && { selectedCardId: selectedCard.id })}
+          />
         </div>
       </div>
 
@@ -389,7 +336,7 @@ export default function Fundraising() {
                 <div>
                   <h5 className="text-sm font-medium text-gray-900 mb-2">Status</h5>
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                    {selectedCard.status}
+                    {selectedCard.columnId}
                   </span>
                 </div>
                 <div>
@@ -403,7 +350,7 @@ export default function Fundraising() {
                 <div>
                   <h5 className="text-sm font-medium text-gray-900 mb-2">Tags</h5>
                   <div className="flex flex-wrap gap-2">
-                    {selectedCard.tags.map((tag) => (
+                    {selectedCard.tags?.map((tag) => (
                       <span key={tag} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
                         {tag}
                       </span>

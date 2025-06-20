@@ -303,7 +303,7 @@ export default function Hiring() {
         </div>
         <div className="flex-1 p-4 overflow-y-auto">
           <div className="space-y-4">
-            {phases.map((phase, index) => (
+            {phases.map((phase, _index) => (
               <div key={phase.name} className="bg-gray-50 rounded-lg p-4">
                 <div className="flex items-center justify-between mb-2">
                   <h4 className="font-medium text-gray-900">{phase.name}</h4>

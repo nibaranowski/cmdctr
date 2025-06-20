@@ -1,6 +1,8 @@
-import { createMocks } from 'node-mocks-http';
-import testStatusHandler from '../../../pages/api/test-status';
 import fs from 'fs';
+
+import { createMocks } from 'node-mocks-http';
+
+import testStatusHandler from '../../../pages/api/test-status';
 
 describe('/api/test-status', () => {
   it('returns test coverage data', async () => {

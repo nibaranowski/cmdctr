@@ -6,9 +6,36 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    spacing: {
+      '0': '0',
+      '1': '4px',
+      '2': '8px',
+      '3': '12px',
+      '4': '16px',
+      '5': '24px',
+      '6': '32px',
+      '7': '40px',
+      '8': '48px',
+      '9': '64px',
+      '10': '80px',
+      '11': '96px',
+      '12': '128px',
+    },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
+        sans: [
+          '-apple-system',
+          'BlinkMacSystemFont',
+          '"Segoe UI"',
+          'Roboto',
+          'Oxygen',
+          'Ubuntu',
+          'Cantarell',
+          '"Fira Sans"',
+          '"Droid Sans"',
+          '"Helvetica Neue"',
+          'sans-serif'
+        ],
       },
       colors: {
         background: 'var(--background)',

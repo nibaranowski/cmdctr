@@ -1,6 +1,7 @@
 // Company model for MongoDB
 // See: https://mongoosejs.com/docs/guide.html
 import { z } from 'zod';
+
 import { IntegrationSchema } from './Integration';
 
 export interface Company {
