@@ -111,7 +111,7 @@
     "@types/testing-library__jest-dom": "^5.14.9",
     "@typescript-eslint/eslint-plugin": "^8.34.1",
     "@typescript-eslint/parser": "^8.34.1",
-    "autocannon": "^7.15.0",
+    "autocannon": "^8.0.0",
     "autoprefixer": "^10.4.0",
     "chokidar": "^3.6.0",
     "commitizen": "^4.3.1",
