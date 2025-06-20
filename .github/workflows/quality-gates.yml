@@ -1,0 +1,383 @@
+name: Quality-First CI/CD
+
+on:
+  push:
+    branches: [ main, staging, production ]
+  pull_request:
+    branches: [ main, staging, production ]
+
+env:
+  NODE_VERSION: '18'
+  COVERAGE_THRESHOLD: 100
+  STAGING_BRANCH: 'staging'
+  PRODUCTION_BRANCH: 'production'
+  GITHUB_TOKEN: your_token
+  GITHUB_REPOSITORY_OWNER: your_username
+  GITHUB_REPOSITORY_NAME: your_repo
+
+jobs:
+  # Quality Gate: Development Environment
+  quality-gate-dev:
+    name: Quality Gate - Development
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.base_ref == 'develop'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Run Development Tests
+      run: npm run test:dev
+      
+    - name: Run Test Dashboard
+      run: node scripts/test-dashboard.js
+      
+    - name: Check Quality Gate Status
+      run: |
+        # Check if all development tests passed
+        if node -e "
+          const fs = require('fs');
+          const results = JSON.parse(fs.readFileSync('test-results.json'));
+          const devResults = Object.entries(results.results).filter(([key]) => key.includes('-dev'));
+          const allPassed = devResults.every(([_, result]) => result.status === 'GREEN');
+          if (!allPassed) {
+            console.error('❌ Development quality gate failed');
+            process.exit(1);
+          }
+          console.log('✅ Development quality gate passed');
+        "; then
+          echo "✅ Development quality gate: OPEN"
+        else
+          echo "❌ Development quality gate: BLOCKED"
+          exit 1
+        fi
+
+  # Quality Gate: Staging Environment
+  quality-gate-staging:
+    name: Quality Gate - Staging
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.base_ref == 'main'
+    needs: quality-gate-dev
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Run Staging Tests
+      run: npm run test:staging
+      
+    - name: Run Test Dashboard
+      run: node scripts/test-dashboard.js
+      
+    - name: Check Quality Gate Status
+      run: |
+        # Check if all staging tests passed
+        if node -e "
+          const fs = require('fs');
+          const results = JSON.parse(fs.readFileSync('test-results.json'));
+          const stagingResults = Object.entries(results.results).filter(([key]) => key.includes('-stag'));
+          const allPassed = stagingResults.every(([_, result]) => result.status === 'GREEN');
+          if (!allPassed) {
+            console.error('❌ Staging quality gate failed');
+            process.exit(1);
+          }
+          console.log('✅ Staging quality gate passed');
+        "; then
+          echo "✅ Staging quality gate: OPEN"
+        else
+          echo "❌ Staging quality gate: BLOCKED"
+          exit 1
+        fi
+
+  # Quality Gate: Production Environment
+  quality-gate-production:
+    name: Quality Gate - Production
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: quality-gate-staging
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Run Production Tests
+      run: npm run test:prod
+      
+    - name: Run Test Dashboard
+      run: node scripts/test-dashboard.js
+      
+    - name: Check Quality Gate Status
+      run: |
+        # Check if all production tests passed
+        if node -e "
+          const fs = require('fs');
+          const results = JSON.parse(fs.readFileSync('test-results.json'));
+          const prodResults = Object.entries(results.results).filter(([key]) => key.includes('-prod'));
+          const allPassed = prodResults.every(([_, result]) => result.status === 'GREEN');
+          if (!allPassed) {
+            console.error('❌ Production quality gate failed');
+            process.exit(1);
+          }
+          console.log('✅ Production quality gate passed');
+        "; then
+          echo "✅ Production quality gate: OPEN"
+        else
+          echo "❌ Production quality gate: BLOCKED"
+          exit 1
+        fi
+
+  # Generate Test Dashboard Report
+  test-dashboard-report:
+    name: Test Dashboard Report
+    runs-on: ubuntu-latest
+    needs: [quality-gate-dev, quality-gate-staging, quality-gate-production]
+    if: always()
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Run Full Test Dashboard
+      run: node scripts/test-dashboard.js
+      
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results
+        path: test-results.json
+        
+    - name: Comment PR with Test Results
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fs = require('fs');
+          const results = JSON.parse(fs.readFileSync('test-results.json'));
+          
+          const comment = `## 🧪 Test Dashboard Results
+          
+          ### Quality Gates
+          - **Dev → Staging**: ${results.summary.qualityGates.devToStaging ? '✅ OPEN' : '❌ BLOCKED'}
+          - **Staging → Prod**: ${results.summary.qualityGates.stagingToProd ? '✅ OPEN' : '❌ BLOCKED'}
+          - **Production Ready**: ${results.summary.qualityGates.productionReady ? '✅ YES' : '❌ NO'}
+          
+          ### Test Summary
+          - **Test Suites**: ${results.summary.passedSuites}/${results.summary.totalSuites} PASSED
+          - **Overall Coverage**: ${results.summary.overallCoverage}%
+          
+          ### Environment Status
+          ${Object.entries(results.results).map(([key, result]) => 
+            `- **${key}**: ${result.status === 'GREEN' ? '🟢' : '🔴'} ${result.coverage ? `${Math.round((result.coverage.branches + result.coverage.functions + result.coverage.lines + result.coverage.statements) / 4)}% coverage` : 'No coverage data'}`
+          ).join('\n')}
+          
+          [View Full Dashboard](https://your-app-url.com/test-dashboard)
+          `;
+          
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: comment
+          });
+
+  # Deploy to Staging (if quality gates pass)
+  deploy-staging:
+    name: Deploy to Staging
+    runs-on: ubuntu-latest
+    needs: quality-gate-staging
+    if: github.event_name == 'pull_request' && github.base_ref == 'main' && needs.quality-gate-staging.result == 'success'
+    environment: staging
+    
+    steps:
+    - name: Deploy to Vercel (Staging)
+      uses: amondnet/vercel-action@v25
+      with:
+        vercel-token: ${{ secrets.VERCEL_TOKEN }}
+        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        vercel-args: '--prod'
+
+  # Deploy to Production (if quality gates pass)
+  deploy-production:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: quality-gate-production
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && needs.quality-gate-production.result == 'success'
+    environment: production
+    
+    steps:
+    - name: Deploy to Vercel (Production)
+      uses: amondnet/vercel-action@v25
+      with:
+        vercel-token: ${{ secrets.VERCEL_TOKEN }}
+        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        vercel-args: '--prod'
+
+  quality-check:
+    runs-on: ubuntu-latest
+    outputs:
+      tests_passed: ${{ steps.test_status.outputs.passed }}
+      coverage_met: ${{ steps.coverage_status.outputs.met }}
+      performance_passed: ${{ steps.performance_status.outputs.passed }}
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Run linter
+        id: lint
+        run: npm run lint
+        continue-on-error: true
+        
+      - name: Auto-fix linting issues
+        if: steps.lint.outcome == 'failure'
+        run: |
+          npm run lint -- --fix
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add .
+          git commit -m "🤖 Auto-fix: Linting issues" || echo "No changes to commit"
+          
+      - name: Run tests with coverage
+        id: test_coverage
+        run: npm run test:coverage:all
+        continue-on-error: true
+        
+      - name: Check coverage thresholds
+        id: coverage_status
+        run: |
+          if node scripts/check-coverage.js; then
+            echo "met=true" >> $GITHUB_OUTPUT
+          else
+            echo "met=false" >> $GITHUB_OUTPUT
+          fi
+          
+      - name: Auto-fix test coverage
+        if: steps.coverage_status.outputs.met == 'false'
+        run: |
+          # Use Cursor Agent to analyze and fix coverage gaps
+          curl -X POST "https://api.cursor.sh/v1/analyze" \
+            -H "Authorization: Bearer ${{ secrets.CURSOR_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"coverage_report\": \"$(cat coverage/coverage-final.json | jq -c)\"}"
+            
+      - name: Run E2E tests
+        run: npm run test:e2e
+        
+      - name: Run performance tests
+        id: performance_status
+        run: |
+          if npm run test:performance; then
+            echo "passed=true" >> $GITHUB_OUTPUT
+          else
+            echo "passed=false" >> $GITHUB_OUTPUT
+          fi
+          
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: |
+            coverage/
+            test-results/
+            
+  promote-to-staging:
+    needs: quality-check
+    if: |
+      github.ref == 'refs/heads/main' &&
+      needs.quality-check.outputs.tests_passed == 'true' &&
+      needs.quality-check.outputs.coverage_met == 'true' &&
+      needs.quality-check.outputs.performance_passed == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Merge to staging
+        run: |
+          git checkout staging
+          git merge --no-ff main -m "🚀 Auto-promote: main → staging"
+          git push origin staging
+          
+  promote-to-production:
+    needs: [quality-check, promote-to-staging]
+    if: |
+      github.ref == 'refs/heads/staging' &&
+      needs.quality-check.outputs.tests_passed == 'true' &&
+      needs.quality-check.outputs.coverage_met == 'true' &&
+      needs.quality-check.outputs.performance_passed == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Merge to production
+        run: |
+          git checkout production
+          git merge --no-ff staging -m "🚀 Auto-promote: staging → production"
+          git push origin production
+          
+      - name: Create release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: release-${{ github.sha }}
+          release_name: Release ${{ github.sha }}
+          body: |
+            🎉 Automated release
+            
+            Quality Gates:
+            - ✅ All tests passed
+            - ✅ 100% coverage achieved
+            - ✅ Performance requirements met
+            
+            [View test dashboard](https://your-app.com/test-dashboard)
+          draft: false
+          prerelease: false 

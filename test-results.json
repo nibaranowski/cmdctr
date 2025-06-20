@@ -1,0 +1,57 @@
+{
+  "timestamp": "2025-06-19T16:23:49.609Z",
+  "results": {
+    "be-dev": {
+      "status": "RED",
+      "coverage": null,
+      "duration": 0,
+      "output": "Command failed: npm run test:unit -- --testPathPattern=\"__tests__/(api|models|lib)\"\nnpm error Missing script: \"test:unit\"\nnpm error\nnpm error To see a list of scripts, run:\nnpm error   npm run\nnpm error A complete log of this run can be found in: /Users/nicolasbaranowski/.npm/_logs/2025-06-19T16_23_48_909Z-debug-0.log\n",
+      "timestamp": "2025-06-19T16:23:48.953Z"
+    },
+    "fe-dev": {
+      "status": "RED",
+      "coverage": null,
+      "duration": 0,
+      "output": "Command failed: npm run test:unit -- --testPathPattern=\"components\"\nnpm error Missing script: \"test:unit\"\nnpm error\nnpm error To see a list of scripts, run:\nnpm error   npm run\nnpm error A complete log of this run can be found in: /Users/nicolasbaranowski/.npm/_logs/2025-06-19T16_23_49_026Z-debug-0.log\n",
+      "timestamp": "2025-06-19T16:23:49.068Z"
+    },
+    "be-stag": {
+      "status": "RED",
+      "coverage": null,
+      "duration": 0,
+      "output": "Command failed: npm run test:staging -- --testPathPattern=\"__tests__/(api|models|lib|integration)\"\nnpm error Missing script: \"test:staging\"\nnpm error\nnpm error To see a list of scripts, run:\nnpm error   npm run\nnpm error A complete log of this run can be found in: /Users/nicolasbaranowski/.npm/_logs/2025-06-19T16_23_49_172Z-debug-0.log\n",
+      "timestamp": "2025-06-19T16:23:49.218Z"
+    },
+    "fe-stag": {
+      "status": "RED",
+      "coverage": null,
+      "duration": 0,
+      "output": "Command failed: npm run test:staging -- --testPathPattern=\"components\"\nnpm error Missing script: \"test:staging\"\nnpm error\nnpm error To see a list of scripts, run:\nnpm error   npm run\nnpm error A complete log of this run can be found in: /Users/nicolasbaranowski/.npm/_logs/2025-06-19T16_23_49_287Z-debug-0.log\n",
+      "timestamp": "2025-06-19T16:23:49.329Z"
+    },
+    "be-prod": {
+      "status": "RED",
+      "coverage": null,
+      "duration": 0,
+      "output": "Command failed: npm run test:prod -- --testPathPattern=\"__tests__/(api|models|lib|integration)\"\nnpm error Missing script: \"test:prod\"\nnpm error\nnpm error To see a list of scripts, run:\nnpm error   npm run\nnpm error A complete log of this run can be found in: /Users/nicolasbaranowski/.npm/_logs/2025-06-19T16_23_49_409Z-debug-0.log\n",
+      "timestamp": "2025-06-19T16:23:49.452Z"
+    },
+    "fe-prod": {
+      "status": "RED",
+      "coverage": null,
+      "duration": 0,
+      "output": "Command failed: npm run test:prod -- --testPathPattern=\"components\"\nnpm error Missing script: \"test:prod\"\nnpm error\nnpm error To see a list of scripts, run:\nnpm error   npm run\nnpm error A complete log of this run can be found in: /Users/nicolasbaranowski/.npm/_logs/2025-06-19T16_23_49_535Z-debug-0.log\n",
+      "timestamp": "2025-06-19T16:23:49.580Z"
+    }
+  },
+  "summary": {
+    "totalSuites": 6,
+    "passedSuites": 0,
+    "overallCoverage": 0,
+    "qualityGates": {
+      "devToStaging": false,
+      "stagingToProd": false,
+      "productionReady": false
+    }
+  }
+}

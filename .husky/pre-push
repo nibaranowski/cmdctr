@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔧 Running auto-heal before push..."
+npm run auto-heal
+
+if [ $? -eq 0 ]; then
+  echo "✅ Auto-heal completed successfully. Proceeding with push..."
+else
+  echo "❌ Auto-heal found issues that require manual attention."
+  echo "Please fix the issues and try again."
+  exit 1
+fi 

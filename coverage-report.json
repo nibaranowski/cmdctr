@@ -1,0 +1,17 @@
+{
+  "dev": {
+    "backend": 0,
+    "frontend": 0,
+    "coverage": 29
+  },
+  "staging": {
+    "backend": 0,
+    "frontend": 0,
+    "coverage": 0
+  },
+  "prod": {
+    "backend": 0,
+    "frontend": 0,
+    "coverage": 0
+  }
+}
