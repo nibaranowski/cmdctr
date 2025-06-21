@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import Head from 'next/head';
 import React from 'react';
@@ -57,13 +59,13 @@ export default function DesignSystemPage() {
       <nav className="bg-surface border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Tabs
-            value={activeTab}
-            onValueChange={setActiveTab}
             items={[
-              { value: 'components', label: 'Components' },
-              { value: 'tokens', label: 'Design Tokens' },
-              { value: 'themes', label: 'Themes' },
+              { id: 'components', label: 'Components', content: <div>Components content</div> },
+              { id: 'tokens', label: 'Design Tokens', content: <div>Tokens content</div> },
+              { id: 'themes', label: 'Themes', content: <div>Themes content</div> },
             ]}
+            defaultActiveTab={activeTab}
+            onChange={setActiveTab}
           />
         </div>
       </nav>
@@ -157,12 +159,12 @@ export default function DesignSystemPage() {
                 <Card variant="surface" padding="lg">
                   <h3 className="text-lg font-medium mb-4">Dropdown</h3>
                   <Dropdown
-                    trigger={<Button variant="outline">Open Dropdown</Button>}
-                    items={[
-                      { label: 'Profile', onClick: () => console.log('Profile') },
-                      { label: 'Settings', onClick: () => console.log('Settings') },
-                      { label: 'Logout', onClick: () => console.log('Logout') },
+                    options={[
+                      { value: 'profile', label: 'Profile' },
+                      { value: 'settings', label: 'Settings' },
+                      { value: 'logout', label: 'Logout' },
                     ]}
+                    placeholder="Select an option"
                   />
                 </Card>
               </div>
@@ -207,11 +209,10 @@ export default function DesignSystemPage() {
                 <Card variant="surface" padding="lg">
                   <h3 className="text-lg font-medium mb-4">Tabs</h3>
                   <Tabs
-                    value="tab1"
                     items={[
-                      { value: 'tab1', label: 'Tab 1' },
-                      { value: 'tab2', label: 'Tab 2' },
-                      { value: 'tab3', label: 'Tab 3' },
+                      { id: 'tab1', label: 'Tab 1', content: <div>Tab 1 content</div> },
+                      { id: 'tab2', label: 'Tab 2', content: <div>Tab 2 content</div> },
+                      { id: 'tab3', label: 'Tab 3', content: <div>Tab 3 content</div> },
                     ]}
                   />
                 </Card>
@@ -221,13 +222,13 @@ export default function DesignSystemPage() {
                   <Accordion
                     items={[
                       {
-                        value: 'item1',
-                        trigger: 'Accordion Item 1',
+                        id: 'item1',
+                        title: 'Accordion Item 1',
                         content: 'This is the content for accordion item 1.',
                       },
                       {
-                        value: 'item2',
-                        trigger: 'Accordion Item 2',
+                        id: 'item2',
+                        title: 'Accordion Item 2',
                         content: 'This is the content for accordion item 2.',
                       },
                     ]}

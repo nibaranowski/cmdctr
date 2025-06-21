@@ -1,1 +1,1 @@
-self.__REACT_LOADABLE_MANIFEST="{}"
+self.__REACT_LOADABLE_MANIFEST='{"node_modules/@clerk/nextjs/dist/esm/app-router/client/ClerkProvider.js -> ./keyless-creator-reader.js":{"id":8325,"files":["static/chunks/325.f87b093f88b24959.js"]},"node_modules/@clerk/nextjs/dist/esm/app-router/keyless-actions.js -> ../server/keyless-log-cache.js":{"id":8553,"files":["static/chunks/553.16f70afc6d682918.js"]},"node_modules/@clerk/nextjs/dist/esm/app-router/keyless-actions.js -> ../server/keyless-node.js":{"id":767,"files":["static/chunks/767.26ebd4e4dcd1269a.js"]}}';
