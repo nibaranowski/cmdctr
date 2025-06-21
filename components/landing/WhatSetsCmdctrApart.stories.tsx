@@ -27,3 +27,28 @@ export const MobileView: Story = {
     },
   },
 };
+
+export const LightMode: Story = {
+  parameters: {
+    backgrounds: { default: 'light' },
+  },
+};
+
+export const DarkMode: Story = {
+  parameters: {
+    backgrounds: { default: 'dark' },
+  },
+};
+
+export const FocusState: Story = {
+  play: async ({ canvasElement }) => {
+    const card = canvasElement.querySelector('[data-testid="card-root"]') as HTMLElement;
+    if (card) card.focus();
+  },
+};
+
+export const HoverState: Story = {
+  parameters: {
+    pseudo: { hover: true },
+  },
+};

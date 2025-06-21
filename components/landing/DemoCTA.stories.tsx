@@ -27,3 +27,28 @@ export const MobileView: Story = {
     },
   },
 };
+
+export const LightMode: Story = {
+  parameters: {
+    backgrounds: { default: 'light' },
+  },
+};
+
+export const DarkMode: Story = {
+  parameters: {
+    backgrounds: { default: 'dark' },
+  },
+};
+
+export const FocusState: Story = {
+  play: async ({ canvasElement }) => {
+    const button = canvasElement.querySelector('button') as HTMLElement;
+    if (button) button.focus();
+  },
+};
+
+export const HoverState: Story = {
+  parameters: {
+    pseudo: { hover: true },
+  },
+};

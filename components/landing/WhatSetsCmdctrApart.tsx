@@ -6,7 +6,7 @@ import Button from '../ui/Button';
 
 const features = [
   {
-    icon: <Grid className="w-8 h-8 text-primary-500" />,
+    icon: <Grid className="w-10 h-10 text-primary-500" />,
     title: 'Unified Meta Box Architecture',
     description: 'Every business function is a modular meta box, orchestrated by AI agents for seamless integration.',
     visual: (
@@ -16,17 +16,17 @@ const features = [
     ),
   },
   {
-    icon: <Zap className="w-8 h-8 text-primary-500" />,
+    icon: <Zap className="w-10 h-10 text-primary-500" />,
     title: 'Real-Time Automation & Sync',
     description: 'Changes in one meta box are instantly reflected everywhere, keeping your entire company in sync.',
   },
   {
-    icon: <Share2 className="w-8 h-8 text-primary-500" />,
+    icon: <Share2 className="w-10 h-10 text-primary-500" />,
     title: 'Extensible Integrations',
     description: 'Connect your favorite tools to cmdctr and create a truly unified command center for your business.',
   },
   {
-    icon: <Shield className="w-8 h-8 text-primary-500" />,
+    icon: <Shield className="w-10 h-10 text-primary-500" />,
     title: 'Enterprise-Grade Security & Audit',
     description: 'Your data is safe with us. We offer robust security features and a complete audit trail of all actions.',
   },
@@ -34,17 +34,17 @@ const features = [
 
 const WhatSetsCmdctrApart: React.FC = () => {
   return (
-    <section className="py-20 bg-background-secondary">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-text-primary">
+    <section className="py-24 bg-background-secondary">
+      <div className="mx-auto px-4 max-w-[1400px]">
+        <div className="text-center mb-14">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-text-primary leading-tight mb-3">
             What sets cmdctr apart
           </h2>
-          <p className="text-lg text-text-secondary mt-4 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-text-secondary/80 mt-2 max-w-2xl mx-auto">
             A new operating model for the AI-native company.
           </p>
         </div>
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-16">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -53,13 +53,19 @@ const WhatSetsCmdctrApart: React.FC = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="p-8 h-full">
-                {feature.visual && <div className="mb-4">{feature.visual}</div>}
-                <div className="mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-bold text-text-primary mb-2">
+              <Card
+                className="p-10 h-full rounded-2xl shadow-xl hover:shadow-2xl transition-all hover:translate-y-2 bg-surface border border-border"
+                variant="elevated"
+                padding="none"
+                hover
+                interactive
+              >
+                {feature.visual && <div className="mb-6">{feature.visual}</div>}
+                <div className="mb-6">{feature.icon}</div>
+                <h3 className="text-2xl font-semibold text-text-primary mb-3">
                   {feature.title}
                 </h3>
-                <p className="text-text-secondary">
+                <p className="text-lg text-text-secondary/80 leading-relaxed">
                   {feature.description}
                 </p>
               </Card>

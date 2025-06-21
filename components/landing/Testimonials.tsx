@@ -1,5 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Quote } from 'lucide-react';
+import Card from '../ui/Card';
 
 const logos = [
   { name: 'Placeholder Inc.', logo: '🏢' },
@@ -15,37 +17,46 @@ const testimonials = [
     quote: 'cmdctr has revolutionized our workflow. The agent-driven approach is a game-changer for our productivity.',
     author: 'Jane Doe',
     title: 'CEO, Placeholder Inc.',
+    avatar: 'JD',
   },
   {
     quote: 'The ability to manage everything from fundraising to product development in one place is incredibly powerful.',
     author: 'John Smith',
     title: 'CTO, Innovate Corp.',
+    avatar: 'JS',
   },
 ];
 
 const Testimonials: React.FC = () => {
   return (
-    <section className="py-20">
-      <div className="container mx-auto px-4">
+    <section className="py-24">
+      <div className="mx-auto px-4 max-w-[1400px]">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <p className="text-center text-text-secondary font-medium mb-8">
+          <p className="text-center text-text-secondary/80 font-medium mb-10 text-lg">
             Trusted by the world's most innovative companies
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-12 mb-20">
             {logos.map((company, index) => (
-              <div key={index} className="flex items-center gap-2 text-text-tertiary text-lg font-semibold">
-                <span>{company.logo}</span>
-                <span>{company.name}</span>
-              </div>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="flex flex-col items-center gap-3 text-text-tertiary/60 hover:text-text-tertiary transition-colors"
+              >
+                <div className="text-2xl md:text-3xl">{company.logo}</div>
+                <span className="text-sm font-medium text-center">{company.name}</span>
+              </motion.div>
             ))}
           </div>
         </motion.div>
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-16">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
@@ -54,13 +65,29 @@ const Testimonials: React.FC = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <blockquote className="text-xl md:text-2xl font-medium text-text-primary">
-                "{testimonial.quote}"
-              </blockquote>
-              <footer className="mt-4">
-                <p className="font-bold text-text-primary">{testimonial.author}</p>
-                <p className="text-text-secondary">{testimonial.title}</p>
-              </footer>
+              <Card
+                className="p-10 rounded-2xl shadow-xl hover:shadow-2xl transition-all hover:translate-y-2 bg-surface border border-border"
+                variant="elevated"
+                padding="none"
+                hover
+                interactive
+              >
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center text-primary-600 font-semibold text-sm">
+                    {testimonial.avatar}
+                  </div>
+                  <Quote className="w-6 h-6 text-primary-500 mt-1 flex-shrink-0" />
+                </div>
+                <blockquote className="text-lg md:text-xl font-medium text-text-primary mb-6 leading-relaxed">
+                  "{testimonial.quote}"
+                </blockquote>
+                <footer className="flex items-center gap-3">
+                  <div>
+                    <p className="font-semibold text-text-primary">{testimonial.author}</p>
+                    <p className="text-text-secondary/80 text-sm">{testimonial.title}</p>
+                  </div>
+                </footer>
+              </Card>
             </motion.div>
           ))}
         </div>
