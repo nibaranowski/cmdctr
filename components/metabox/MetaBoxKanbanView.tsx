@@ -1,153 +1,160 @@
-import React, { useCallback } from 'react';
+import React, { useState, useRef } from 'react';
+import { MetaBoxManifest } from '../../types/metaBoxManifest';
+import MetaBoxCoreObjectCard from './MetaBoxCoreObjectCard';
 
-import { MetaBox } from '../../models/MetaBox';
-
-import { CoreObjectCard } from './CoreObjectCard';
-import { CoreObject } from './MetaBoxWorkspace';
-
-interface MetaBoxKanbanViewProps {
-  metaBox: MetaBox;
-  coreObjects: CoreObject[];
-  selectedObjectId: string | null;
-  draggedObjectId: string | null;
-  isDragging: boolean;
-  canEdit: boolean;
-  onObjectSelect: (objectId: string) => void;
-  onDragStart: (objectId: string) => void;
-  onDragEnd: () => void;
-  onDrop: (targetPhase: string) => void;
-  'data-testid'?: string;
+interface CoreObject {
+  id: string;
+  currentPhase: string;
+  [key: string]: any;
 }
 
-export const MetaBoxKanbanView: React.FC<MetaBoxKanbanViewProps> = ({
-  metaBox,
+interface MetaBoxKanbanViewProps {
+  manifest: MetaBoxManifest;
+  coreObjects: CoreObject[];
+  selectedObjectId?: string | null;
+  onObjectSelect?: (objectId: string) => void;
+  onObjectMove?: (objectId: string, fromPhase: string, toPhase: string) => void;
+}
+
+const MetaBoxKanbanView: React.FC<MetaBoxKanbanViewProps> = ({
+  manifest,
   coreObjects,
   selectedObjectId,
-  draggedObjectId,
-  isDragging,
-  canEdit,
   onObjectSelect,
-  onDragStart,
-  onDragEnd,
-  onDrop,
-  'data-testid': dataTestId
+  onObjectMove,
 }) => {
-  // Group objects by phase
-  const objectsByPhase = coreObjects.reduce((acc, obj) => {
-    const phase = obj.phase;
-    if (!acc[phase]) {
-      acc[phase] = [];
-    }
-    acc[phase].push(obj);
-    return acc;
-  }, {} as Record<string, CoreObject[]>);
+  const [draggedObject, setDraggedObject] = useState<string | null>(null);
+  const [dragOverPhase, setDragOverPhase] = useState<string | null>(null);
+  const dragCounter = useRef(0);
 
-  // Handle drag over for drop zones
-  const handleDragOver = useCallback((e: React.DragEvent) => {
-    e.preventDefault();
-    e.currentTarget.classList.add('bg-blue-50', 'border-blue-300');
-  }, []);
-
-  const handleDragLeave = useCallback((e: React.DragEvent) => {
-    e.currentTarget.classList.remove('bg-blue-50', 'border-blue-300');
-  }, []);
-
-  // Handle drop
-  const handleDrop = useCallback((e: React.DragEvent, phase: string) => {
-    e.preventDefault();
-    e.currentTarget.classList.remove('bg-blue-50', 'border-blue-300');
-    onDrop(phase);
-  }, [onDrop]);
-
-  // Handle card drag events
-  const handleCardDragStart = useCallback((e: React.DragEvent, objectId: string) => {
-    onDragStart(objectId);
+  const handleDragStart = (e: React.DragEvent, objectId: string) => {
+    setDraggedObject(objectId);
     e.dataTransfer.effectAllowed = 'move';
-  }, [onDragStart]);
+    e.dataTransfer.setData('text/plain', objectId);
+  };
 
-  const handleCardDragEnd = useCallback((e: React.DragEvent) => {
-    onDragEnd();
-  }, [onDragEnd]);
+  const handleDragOver = (e: React.DragEvent, phaseId: string) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    setDragOverPhase(phaseId);
+  };
+
+  const handleDragEnter = (e: React.DragEvent) => {
+    e.preventDefault();
+    dragCounter.current++;
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    dragCounter.current--;
+    if (dragCounter.current === 0) {
+      setDragOverPhase(null);
+    }
+  };
+
+  const handleDrop = (e: React.DragEvent, targetPhaseId: string) => {
+    e.preventDefault();
+    dragCounter.current = 0;
+    setDragOverPhase(null);
+    
+    if (draggedObject && onObjectMove) {
+      const draggedObjectData = coreObjects.find(obj => obj.id === draggedObject);
+      if (draggedObjectData && draggedObjectData.currentPhase !== targetPhaseId) {
+        onObjectMove(draggedObject, draggedObjectData.currentPhase, targetPhaseId);
+      }
+    }
+    setDraggedObject(null);
+  };
+
+  const getObjectsForPhase = (phaseId: string) => {
+    return coreObjects.filter(obj => obj.currentPhase === phaseId);
+  };
+
+  const getPhaseStatusColor = (status: string) => {
+    switch (status) {
+      case 'active': return 'bg-green-500';
+      case 'complete': return 'bg-blue-500';
+      case 'pending': return 'bg-gray-400';
+      default: return 'bg-gray-400';
+    }
+  };
 
   return (
-    <div 
-      className="flex-1 overflow-x-auto p-6"
-      data-testid={dataTestId}
-    >
-      <div className="flex space-x-6 min-w-max">
-        {metaBox.phases.map((phase) => {
-          const phaseObjects = objectsByPhase[phase.name] || [];
-          
-          return (
-            <div
-              key={phase.id}
-              className="flex-shrink-0 w-80"
-            >
-              {/* Phase Header */}
-              <div className="flex items-center justify-between mb-4">
+    <div className="flex space-x-6 h-full overflow-x-auto p-4">
+      {manifest.phases.map((phase) => {
+        const phaseObjects = getObjectsForPhase(phase.id);
+        const isDragOver = dragOverPhase === phase.id;
+        
+        return (
+          <div
+            key={phase.id}
+            className={`flex-shrink-0 w-80 bg-gray-50 rounded-lg border-2 border-dashed transition-colors ${
+              isDragOver 
+                ? 'border-blue-400 bg-blue-50' 
+                : 'border-gray-200'
+            }`}
+            onDragOver={(e) => handleDragOver(e, phase.id)}
+            onDragEnter={handleDragEnter}
+            onDragLeave={handleDragLeave}
+            onDrop={(e) => handleDrop(e, phase.id)}
+            data-testid={`kanban-phase-${phase.id}`}
+          >
+            {/* Phase Header */}
+            <div className="p-4 border-b border-gray-200 bg-white rounded-t-lg">
+              <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <h3 className="text-sm font-medium text-gray-900">{phase.name}</h3>
-                  <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
-                    {phaseObjects.length}
-                  </span>
+                  <div className={`w-3 h-3 rounded-full ${getPhaseStatusColor(phase.status)}`} />
+                  <h3 className="font-medium text-gray-900">{phase.name}</h3>
                 </div>
-                
-                {canEdit && (
-                  <button
-                    className="p-1 text-gray-400 hover:text-gray-600 rounded"
-                    title="Add item"
-                  >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                    </svg>
-                  </button>
-                )}
-              </div>
-
-              {/* Phase Column */}
-              <div
-                className={`min-h-[calc(100vh-200px)] bg-gray-50 rounded-lg border-2 border-dashed border-gray-200 p-4 transition-colors ${
-                  isDragging ? 'border-blue-300 bg-blue-50' : ''
-                }`}
-                onDragOver={handleDragOver}
-                onDragLeave={handleDragLeave}
-                onDrop={(e) => handleDrop(e, phase.name)}
-              >
-                {/* Cards */}
-                <div className="space-y-3">
-                  {phaseObjects.map((object) => (
-                    <CoreObjectCard
-                      key={object.id}
-                      object={object}
-                      isSelected={selectedObjectId === object.id}
-                      isDragging={draggedObjectId === object.id}
-                      canEdit={canEdit}
-                      onSelect={() => onObjectSelect(object.id)}
-                      onDragStart={(e) => handleCardDragStart(e, object.id)}
-                      onDragEnd={handleCardDragEnd}
-                    />
-                  ))}
-                  
-                  {/* Empty state */}
-                  {phaseObjects.length === 0 && (
-                    <div className="text-center py-8 text-gray-500">
-                      <svg className="w-8 h-8 mx-auto mb-2 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                      </svg>
-                      <p className="text-sm">No items in this phase</p>
-                      {canEdit && (
-                        <button className="mt-2 text-xs text-blue-600 hover:text-blue-700">
-                          Add item
-                        </button>
-                      )}
-                    </div>
-                  )}
-                </div>
+                <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
+                  {phaseObjects.length}
+                </span>
               </div>
             </div>
-          );
-        })}
-      </div>
+
+            {/* Phase Content */}
+            <div className="p-4 space-y-3 min-h-[400px]">
+              {phaseObjects.length === 0 ? (
+                <div className="text-center text-gray-500 py-8">
+                  <svg
+                    className="mx-auto h-8 w-8 text-gray-400 mb-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
+                  </svg>
+                  <p className="text-sm">No items</p>
+                </div>
+              ) : (
+                phaseObjects.map((coreObject) => (
+                  <div
+                    key={coreObject.id}
+                    className={`transition-transform duration-200 ${
+                      draggedObject === coreObject.id ? 'opacity-50 scale-95' : ''
+                    }`}
+                  >
+                    <MetaBoxCoreObjectCard
+                      coreObject={coreObject}
+                      manifest={manifest}
+                      isSelected={selectedObjectId === coreObject.id}
+                      onClick={() => onObjectSelect?.(coreObject.id)}
+                      onDragStart={(e) => handleDragStart(e, coreObject.id)}
+                    />
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
-}; 
+};
+
+export default MetaBoxKanbanView; 

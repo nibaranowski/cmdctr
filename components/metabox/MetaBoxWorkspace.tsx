@@ -1,31 +1,96 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react';
-
-import { useLocalStorage } from '../../hooks/useLocalStorage';
-import { MetaBox } from '../../models/MetaBox';
-
-
-import { MetaBoxDetailPanel } from './MetaBoxDetailPanel';
-import { MetaBoxHeader } from './MetaBoxHeader';
-import { MetaBoxKanbanView } from './MetaBoxKanbanView';
-import { MetaBoxListView } from './MetaBoxListView';
-import { CoreObject } from './types';
-import { ViewToggle } from './ViewToggle';
+import React, { useState } from 'react';
 import { MetaBoxManifest } from '../../types/metaBoxManifest';
 import PhasePanel from './PhasePanel';
+import MetaBoxKanbanView from './MetaBoxKanbanView';
+import MetaBoxListView from './MetaBoxListView';
+
+interface CoreObject {
+  id: string;
+  name: string;
+  currentPhase: string;
+  status: string;
+  assignedAgent?: string;
+  priority?: string;
+  updatedAt?: string;
+  [key: string]: any;
+}
 
 interface MetaBoxWorkspaceProps {
   manifest: MetaBoxManifest;
   onPhaseAction?: (phaseId: string, action: 'complete' | 'revert' | 'trigger') => void;
   onAgentMessage?: (phaseId: string, message: string) => void;
+  onObjectSelect?: (objectId: string) => void;
+  onObjectMove?: (objectId: string, fromPhase: string, toPhase: string) => void;
 }
 
 const MetaBoxWorkspace: React.FC<MetaBoxWorkspaceProps> = ({
   manifest,
   onPhaseAction,
   onAgentMessage,
+  onObjectSelect,
+  onObjectMove,
 }) => {
   const [viewMode, setViewMode] = useState<'kanban' | 'list'>('kanban');
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
+
+  // Mock core objects data
+  const mockCoreObjects: CoreObject[] = [
+    {
+      id: '1',
+      name: 'Sequoia Capital',
+      currentPhase: 'sourcing',
+      status: 'active',
+      assignedAgent: 'ai-research',
+      priority: 'high',
+      updatedAt: '2024-01-15',
+      investmentSize: '$10M',
+      sector: 'SaaS',
+    },
+    {
+      id: '2',
+      name: 'Andreessen Horowitz',
+      currentPhase: 'outreach',
+      status: 'pending',
+      assignedAgent: 'ai-outreach',
+      priority: 'medium',
+      updatedAt: '2024-01-14',
+      investmentSize: '$5M',
+      sector: 'Fintech',
+    },
+    {
+      id: '3',
+      name: 'Kleiner Perkins',
+      currentPhase: 'negotiation',
+      status: 'active',
+      assignedAgent: 'ai-negotiator',
+      priority: 'high',
+      updatedAt: '2024-01-13',
+      investmentSize: '$15M',
+      sector: 'AI/ML',
+    },
+    {
+      id: '4',
+      name: 'Benchmark Capital',
+      currentPhase: 'closed',
+      status: 'complete',
+      assignedAgent: 'ai-admin',
+      priority: 'low',
+      updatedAt: '2024-01-12',
+      investmentSize: '$8M',
+      sector: 'E-commerce',
+    },
+  ];
+
+  const handleObjectSelect = (objectId: string) => {
+    setSelectedItem(objectId);
+    onObjectSelect?.(objectId);
+  };
+
+  const handleObjectMove = (objectId: string, fromPhase: string, toPhase: string) => {
+    onObjectMove?.(objectId, fromPhase, toPhase);
+    // In a real app, this would update the backend
+    console.log(`Moved object ${objectId} from ${fromPhase} to ${toPhase}`);
+  };
 
   return (
     <div className="flex h-screen bg-gray-50">
@@ -74,20 +139,23 @@ const MetaBoxWorkspace: React.FC<MetaBoxWorkspaceProps> = ({
         </div>
 
         {/* Main Content Area */}
-        <div className="flex-1 p-6">
+        <div className="flex-1 overflow-hidden">
           {viewMode === 'kanban' ? (
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
-              <h2 className="text-lg font-medium text-gray-900 mb-4">Kanban View</h2>
-              <p className="text-gray-600">
-                Kanban board implementation coming soon...
-              </p>
-            </div>
+            <MetaBoxKanbanView
+              manifest={manifest}
+              coreObjects={mockCoreObjects}
+              selectedObjectId={selectedItem}
+              onObjectSelect={handleObjectSelect}
+              onObjectMove={handleObjectMove}
+            />
           ) : (
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
-              <h2 className="text-lg font-medium text-gray-900 mb-4">List View</h2>
-              <p className="text-gray-600">
-                List view implementation coming soon...
-              </p>
+            <div className="p-6">
+              <MetaBoxListView
+                manifest={manifest}
+                coreObjects={mockCoreObjects}
+                selectedObjectId={selectedItem}
+                onObjectSelect={handleObjectSelect}
+              />
             </div>
           )}
         </div>

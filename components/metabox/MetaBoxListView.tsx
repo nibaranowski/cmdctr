@@ -1,77 +1,33 @@
 import React, { useState, useMemo } from 'react';
+import { MetaBoxManifest, MetaBoxCoreObjectField } from '../../types/metaBoxManifest';
 
-import { MetaBox } from '../../models/MetaBox';
-
-import { CoreObjectCard } from './CoreObjectCard';
-import { CoreObject } from './types';
-
-interface MetaBoxListViewProps {
-  metaBox: MetaBox;
-  coreObjects: CoreObject[];
-  selectedObjectId: string | null;
-  canEdit: boolean;
-  onObjectSelect: (objectId: string) => void;
-  onObjectUpdate?: (objectId: string, updates: Partial<CoreObject>) => Promise<void>;
-  onObjectDelete?: (objectId: string) => Promise<void>;
-  'data-testid'?: string;
+interface CoreObject {
+  id: string;
+  currentPhase: string;
+  [key: string]: any;
 }
 
-type SortField = 'title' | 'status' | 'phase' | 'assignee' | 'created_at' | 'updated_at';
+interface MetaBoxListViewProps {
+  manifest: MetaBoxManifest;
+  coreObjects: CoreObject[];
+  selectedObjectId?: string | null;
+  onObjectSelect?: (objectId: string) => void;
+}
+
+type SortField = string;
 type SortDirection = 'asc' | 'desc';
 
-export const MetaBoxListView: React.FC<MetaBoxListViewProps> = ({
-  metaBox,
+const MetaBoxListView: React.FC<MetaBoxListViewProps> = ({
+  manifest,
   coreObjects,
   selectedObjectId,
-  canEdit,
   onObjectSelect,
-  onObjectUpdate,
-  onObjectDelete,
-  'data-testid': dataTestId
 }) => {
-  const [sortField, setSortField] = useState<SortField>('created_at');
-  const [sortDirection, setSortDirection] = useState<SortDirection>('desc');
-  const [filterPhase, setFilterPhase] = useState<string>('all');
-  const [filterStatus, setFilterStatus] = useState<string>('all');
+  const [sortField, setSortField] = useState<SortField>('name');
+  const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
+  const [filters, setFilters] = useState<Record<string, string>>({});
 
-  // Sort and filter objects
-  const sortedAndFilteredObjects = useMemo(() => {
-    let filtered = [...coreObjects];
-
-    // Apply filters
-    if (filterPhase !== 'all') {
-      filtered = filtered.filter(obj => obj.phase === filterPhase);
-    }
-    if (filterStatus !== 'all') {
-      filtered = filtered.filter(obj => obj.status === filterStatus);
-    }
-
-    // Apply sorting
-    filtered.sort((a, b) => {
-      let aValue: any = a[sortField];
-      let bValue: any = b[sortField];
-
-      // Handle date fields
-      if (sortField === 'created_at' || sortField === 'updated_at') {
-        aValue = new Date(aValue).getTime();
-        bValue = new Date(bValue).getTime();
-      }
-
-      // Handle string fields
-      if (typeof aValue === 'string') {
-        aValue = aValue.toLowerCase();
-        bValue = bValue.toLowerCase();
-      }
-
-      if (aValue < bValue) return sortDirection === 'asc' ? -1 : 1;
-      if (aValue > bValue) return sortDirection === 'asc' ? 1 : -1;
-      return 0;
-    });
-
-    return filtered;
-  }, [coreObjects, sortField, sortDirection, filterPhase, filterStatus]);
-
-  const handleSort = (field: SortField) => {
+  const handleSort = (field: string) => {
     if (sortField === field) {
       setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
     } else {
@@ -80,7 +36,88 @@ export const MetaBoxListView: React.FC<MetaBoxListViewProps> = ({
     }
   };
 
-  const getSortIcon = (field: SortField) => {
+  const handleFilter = (field: string, value: string) => {
+    setFilters(prev => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
+  const filteredAndSortedObjects = useMemo(() => {
+    let filtered = coreObjects.filter(obj => {
+      return Object.entries(filters).every(([field, value]) => {
+        if (!value) return true;
+        const objValue = obj[field];
+        return objValue?.toString().toLowerCase().includes(value.toLowerCase());
+      });
+    });
+
+    filtered.sort((a, b) => {
+      const aValue = a[sortField];
+      const bValue = b[sortField];
+      
+      if (aValue === bValue) return 0;
+      if (aValue === null || aValue === undefined) return 1;
+      if (bValue === null || bValue === undefined) return -1;
+      
+      const comparison = aValue < bValue ? -1 : 1;
+      return sortDirection === 'asc' ? comparison : -comparison;
+    });
+
+    return filtered;
+  }, [coreObjects, sortField, sortDirection, filters]);
+
+  const getFieldValue = (field: MetaBoxCoreObjectField, value: any) => {
+    switch (field.type) {
+      case 'status':
+        return (
+          <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
+            value === 'active' ? 'bg-green-100 text-green-800' :
+            value === 'complete' ? 'bg-blue-100 text-blue-800' :
+            value === 'pending' ? 'bg-yellow-100 text-yellow-800' :
+            'bg-gray-100 text-gray-800'
+          }`}>
+            {value || '-'}
+          </span>
+        );
+      
+      case 'agent':
+        const agent = manifest.agents.find(a => a.id === value);
+        return agent ? (
+          <div className="flex items-center space-x-2">
+            <div className="w-6 h-6 bg-gray-300 rounded-full flex items-center justify-center text-xs font-medium text-gray-700">
+              {agent.name.charAt(0)}
+            </div>
+            <span className="text-sm text-gray-900">{agent.name}</span>
+          </div>
+        ) : (
+          <span className="text-sm text-gray-500">Unassigned</span>
+        );
+      
+      case 'date':
+        return (
+          <span className="text-sm text-gray-600">
+            {value ? new Date(value).toLocaleDateString() : '-'}
+          </span>
+        );
+      
+      case 'number':
+        return (
+          <span className="text-sm font-medium text-gray-900">
+            {typeof value === 'number' ? value.toLocaleString() : value || '-'}
+          </span>
+        );
+      
+      default:
+        return (
+          <span className="text-sm text-gray-900 truncate">
+            {value || '-'}
+          </span>
+        );
+    }
+  };
+
+  const SortIcon = ({ field }: { field: string }) => {
     if (sortField !== field) {
       return (
         <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -88,202 +125,127 @@ export const MetaBoxListView: React.FC<MetaBoxListViewProps> = ({
         </svg>
       );
     }
-
-    return sortDirection === 'asc' ? (
-      <svg className="w-4 h-4 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-      </svg>
-    ) : (
-      <svg className="w-4 h-4 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+    
+    return (
+      <svg className={`w-4 h-4 ${sortDirection === 'asc' ? 'text-blue-600' : 'text-blue-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={sortDirection === 'asc' ? 'M5 15l7-7 7 7' : 'M19 9l-7 7-7-7'} />
       </svg>
     );
   };
 
   return (
-    <div className="flex-1 overflow-hidden" data-testid={dataTestId}>
-      {/* Filters and Controls */}
-      <div className="bg-white border-b border-gray-200 px-6 py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            {/* Phase Filter */}
-            <div>
-              <label className="block text-xs font-medium text-gray-700 mb-1">Phase</label>
-              <select
-                value={filterPhase}
-                onChange={(e) => setFilterPhase(e.target.value)}
-                className="text-sm border border-gray-300 rounded-md px-3 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              >
-                <option value="all">All Phases</option>
-                {metaBox.phases.map((phase) => (
-                  <option key={phase.id} value={phase.name}>{phase.name}</option>
-                ))}
-              </select>
+    <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+      {/* Filters */}
+      <div className="p-4 border-b border-gray-200 bg-gray-50">
+        <div className="grid grid-cols-4 gap-4">
+          {manifest.fields.slice(0, 4).map((field) => (
+            <div key={field.key}>
+              <label className="block text-xs font-medium text-gray-700 mb-1">
+                Filter {field.label}
+              </label>
+              <input
+                type="text"
+                value={filters[field.key] || ''}
+                onChange={(e) => handleFilter(field.key, e.target.value)}
+                placeholder={`Filter ${field.label}...`}
+                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
             </div>
-
-            {/* Status Filter */}
-            <div>
-              <label className="block text-xs font-medium text-gray-700 mb-1">Status</label>
-              <select
-                value={filterStatus}
-                onChange={(e) => setFilterStatus(e.target.value)}
-                className="text-sm border border-gray-300 rounded-md px-3 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              >
-                <option value="all">All Statuses</option>
-                <option value="active">Active</option>
-                <option value="pending">Pending</option>
-                <option value="completed">Completed</option>
-                <option value="archived">Archived</option>
-              </select>
-            </div>
-          </div>
-
-          <div className="text-sm text-gray-600">
-            {sortedAndFilteredObjects.length} of {coreObjects.length} items
-          </div>
+          ))}
         </div>
       </div>
 
-      {/* Table Header */}
-      <div className="bg-white border-b border-gray-200">
-        <div className="px-6 py-3">
-          <div className="grid grid-cols-12 gap-4 text-xs font-medium text-gray-700 uppercase tracking-wider">
-            <div className="col-span-4">
-              <button
-                onClick={() => handleSort('title')}
-                className="flex items-center space-x-1 hover:text-gray-900"
-              >
-                <span>Title</span>
-                {getSortIcon('title')}
-              </button>
-            </div>
-            <div className="col-span-2">
-              <button
-                onClick={() => handleSort('status')}
-                className="flex items-center space-x-1 hover:text-gray-900"
-              >
-                <span>Status</span>
-                {getSortIcon('status')}
-              </button>
-            </div>
-            <div className="col-span-2">
-              <button
-                onClick={() => handleSort('phase')}
-                className="flex items-center space-x-1 hover:text-gray-900"
-              >
-                <span>Phase</span>
-                {getSortIcon('phase')}
-              </button>
-            </div>
-            <div className="col-span-2">
-              <button
-                onClick={() => handleSort('assignee')}
-                className="flex items-center space-x-1 hover:text-gray-900"
-              >
-                <span>Assignee</span>
-                {getSortIcon('assignee')}
-              </button>
-            </div>
-            <div className="col-span-2">
-              <button
-                onClick={() => handleSort('updated_at')}
-                className="flex items-center space-x-1 hover:text-gray-900"
-              >
-                <span>Updated</span>
-                {getSortIcon('updated_at')}
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Table Body */}
-      <div className="flex-1 overflow-y-auto">
-        {sortedAndFilteredObjects.length === 0 ? (
-          <div className="flex items-center justify-center h-64 text-gray-500">
-            <div className="text-center">
-              <svg className="w-12 h-12 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-              <p className="text-lg font-medium">No items found</p>
-              <p className="text-sm">Try adjusting your filters</p>
-            </div>
-          </div>
-        ) : (
-          <div className="divide-y divide-gray-200">
-            {sortedAndFilteredObjects.map((object) => (
-              <div
-                key={object.id}
-                className={`px-6 py-4 hover:bg-gray-50 cursor-pointer transition-colors ${
-                  selectedObjectId === object.id ? 'bg-blue-50 border-l-4 border-blue-500' : ''
-                }`}
-                onClick={() => onObjectSelect(object.id)}
-              >
-                <div className="grid grid-cols-12 gap-4 items-center">
-                  {/* Title */}
-                  <div className="col-span-4">
-                    <div className="flex items-center space-x-3">
-                      <h3 className="text-sm font-medium text-gray-900 truncate">
-                        {object.title}
-                      </h3>
-                      {object.priority && (
-                        <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
-                          object.priority === 'urgent' ? 'bg-red-100 text-red-800' :
-                          object.priority === 'high' ? 'bg-orange-100 text-orange-800' :
-                          object.priority === 'medium' ? 'bg-yellow-100 text-yellow-800' :
-                          'bg-green-100 text-green-800'
-                        }`}>
-                          {object.priority}
-                        </span>
-                      )}
-                    </div>
+      {/* Table */}
+      <div className="overflow-x-auto">
+        <table className="min-w-full divide-y divide-gray-200">
+          <thead className="bg-gray-50">
+            <tr>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Item
+              </th>
+              {manifest.fields.map((field) => (
+                <th
+                  key={field.key}
+                  className={`px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider ${
+                    field.sortable ? 'cursor-pointer hover:bg-gray-100' : ''
+                  }`}
+                  onClick={() => field.sortable && handleSort(field.key)}
+                >
+                  <div className="flex items-center space-x-1">
+                    <span>{field.label}</span>
+                    {field.sortable && <SortIcon field={field.key} />}
                   </div>
-
-                  {/* Status */}
-                  <div className="col-span-2">
-                    <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
-                      object.status === 'active' ? 'bg-green-100 text-green-800' :
-                      object.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
-                      object.status === 'completed' ? 'bg-blue-100 text-blue-800' :
-                      'bg-gray-100 text-gray-800'
-                    }`}>
-                      {object.status}
-                    </span>
-                  </div>
-
-                  {/* Phase */}
-                  <div className="col-span-2">
-                    <span className="text-sm text-gray-900">{object.phase}</span>
-                  </div>
-
-                  {/* Assignee */}
-                  <div className="col-span-2">
-                    {object.assignee ? (
-                      <div className="flex items-center space-x-2">
-                        <div className="w-6 h-6 bg-gray-300 rounded-full flex items-center justify-center">
-                          <span className="text-xs font-medium text-gray-700">
-                            {object.assignee.charAt(0).toUpperCase()}
-                          </span>
+                </th>
+              ))}
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Phase
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Updated
+              </th>
+            </tr>
+          </thead>
+          <tbody className="bg-white divide-y divide-gray-200">
+            {filteredAndSortedObjects.length === 0 ? (
+              <tr>
+                <td colSpan={manifest.fields.length + 3} className="px-6 py-12 text-center text-gray-500">
+                  <svg className="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  <p className="text-sm">No items found</p>
+                </td>
+              </tr>
+            ) : (
+              filteredAndSortedObjects.map((coreObject) => (
+                <tr
+                  key={coreObject.id}
+                  className={`cursor-pointer transition-colors ${
+                    selectedObjectId === coreObject.id
+                      ? 'bg-blue-50 border-l-4 border-l-blue-500'
+                      : 'hover:bg-gray-50'
+                  }`}
+                  onClick={() => onObjectSelect?.(coreObject.id)}
+                  data-testid={`list-item-${coreObject.id}`}
+                >
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="flex items-center">
+                      <div className="flex-shrink-0 h-8 w-8">
+                        <div className="h-8 w-8 bg-gray-300 rounded-full flex items-center justify-center text-sm font-medium text-gray-700">
+                          {(coreObject.name || coreObject.title || '#').charAt(0)}
                         </div>
-                        <span className="text-sm text-gray-900 truncate">{object.assignee}</span>
                       </div>
-                    ) : (
-                      <span className="text-sm text-gray-500">Unassigned</span>
-                    )}
-                  </div>
-
-                  {/* Updated */}
-                  <div className="col-span-2">
-                    <span className="text-sm text-gray-500">
-                      {new Date(object.updated_at).toLocaleDateString()}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
+                      <div className="ml-4">
+                        <div className="text-sm font-medium text-gray-900">
+                          {coreObject.name || coreObject.title || `#${coreObject.id}`}
+                        </div>
+                        <div className="text-sm text-gray-500">
+                          {coreObject.id}
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  
+                  {manifest.fields.map((field) => (
+                    <td key={field.key} className="px-6 py-4 whitespace-nowrap">
+                      {getFieldValue(field, coreObject[field.key])}
+                    </td>
+                  ))}
+                  
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {coreObject.currentPhase || 'No phase'}
+                  </td>
+                  
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {coreObject.updatedAt ? new Date(coreObject.updatedAt).toLocaleDateString() : '-'}
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
       </div>
     </div>
   );
-}; 
+};
+
+export default MetaBoxListView; 
