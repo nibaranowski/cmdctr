@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import React, { forwardRef } from 'react';
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | 'elevated' | 'outlined' | 'ghost';
+  variant?: 'default' | 'elevated' | 'outlined' | 'ghost' | 'surface';
   padding?: 'none' | 'sm' | 'md' | 'lg';
   hover?: boolean;
   interactive?: boolean;
@@ -32,34 +32,43 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
       'focus:outline-none',
       'focus:ring-2',
       'focus:ring-offset-2',
+      'focus:ring-border-focus',
     ];
 
     const variantClasses = {
       default: [
-        'bg-white',
+        'bg-surface',
         'border',
-        'border-gray-200',
+        'border-border',
         'shadow-sm',
         hover ? 'hover:shadow-md' : '',
-        hover ? 'hover:border-gray-300' : '',
+        hover ? 'hover:border-border-hover' : '',
       ],
       elevated: [
-        'bg-white',
+        'bg-surface',
         'border',
-        'border-gray-200',
+        'border-border',
         'shadow-md',
         hover ? 'hover:shadow-lg' : '',
-        hover ? 'hover:border-gray-300' : '',
+        hover ? 'hover:border-border-hover' : '',
       ],
       outlined: [
-        'bg-white',
+        'bg-surface',
         'border-2',
-        'border-gray-200',
-        hover ? 'hover:border-gray-300' : '',
+        'border-border',
+        hover ? 'hover:border-border-hover' : '',
+      ],
+      surface: [
+        'bg-surface',
+        'border',
+        'border-border',
+        'shadow-lg',
+        hover ? 'hover:shadow-xl' : '',
+        hover ? 'hover:border-border-hover' : '',
       ],
       ghost: [
         'bg-transparent',
-        hover ? 'hover:bg-gray-50' : '',
+        hover ? 'hover:bg-surface-hover' : '',
       ],
     };
 
@@ -74,7 +83,6 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
       'cursor-pointer',
       'hover:scale-[1.02]',
       'active:scale-[0.98]',
-      'focus:ring-blue-500',
     ] : [];
 
     const classes = [
@@ -99,8 +107,8 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
           {...(props as any)}
         >
           {loading && (
-            <div className="absolute inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center z-10">
-              <div className="animate-spin rounded-full h-6 w-6 border-2 border-blue-600 border-t-transparent" />
+            <div className="absolute inset-0 bg-surface/80 backdrop-blur-sm flex items-center justify-center z-10">
+              <div className="animate-spin rounded-full h-6 w-6 border-2 border-primary-600 border-t-transparent" />
             </div>
           )}
           {children}
@@ -116,8 +124,8 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
         {...props}
       >
         {loading && (
-          <div className="absolute inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center z-10">
-            <div className="animate-spin rounded-full h-6 w-6 border-2 border-blue-600 border-t-transparent" />
+          <div className="absolute inset-0 bg-surface/80 backdrop-blur-sm flex items-center justify-center z-10">
+            <div className="animate-spin rounded-full h-6 w-6 border-2 border-primary-600 border-t-transparent" />
           </div>
         )}
         {children}

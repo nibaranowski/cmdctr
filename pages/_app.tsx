@@ -4,6 +4,7 @@ import posthog from 'posthog-js'
 import { useEffect } from 'react'
 
 import { logInfo, logError } from '../lib/betterstack'
+import { ThemeProvider } from '../components/ui/ThemeProvider'
 import '../styles/globals.css'
 import '../styles/design-system.css'
 
@@ -62,13 +63,19 @@ export default function App({ Component, pageProps }: AppProps) {
 
   // If Clerk is not configured, render without authentication
   if (!isClerkConfigured) {
-    return <Component {...pageProps} />
+    return (
+      <ThemeProvider>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    )
   }
 
-  // If Clerk is configured, wrap with ClerkProvider
+  // If Clerk is configured, wrap with ClerkProvider and ThemeProvider
   return (
     <ClerkProvider {...pageProps}>
-      <Component {...pageProps} />
+      <ThemeProvider>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </ClerkProvider>
   )
 } 

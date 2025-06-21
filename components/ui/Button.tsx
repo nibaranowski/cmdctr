@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'ghost' | 'danger' | 'success';
+  variant?: 'primary' | 'secondary' | 'ghost' | 'danger' | 'success' | 'outline';
   size?: 'xs' | 'sm' | 'md' | 'lg';
   loading?: boolean;
   leftIcon?: React.ReactNode;
@@ -27,42 +27,51 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseClasses = [
-      'inline-flex items-center justify-center font-medium transition-all duration-200',
+      'inline-flex items-center justify-center font-medium',
+      'transition-all duration-200',
       'focus:outline-none focus:ring-2 focus:ring-offset-2',
       'disabled:opacity-50 disabled:cursor-not-allowed',
       'select-none transform hover:scale-[1.02] active:scale-[0.98]',
+      'border border-transparent',
     ];
 
     const sizeClasses = {
-      xs: 'px-2 py-1 text-xs rounded-md gap-1',
-      sm: 'px-3 py-1.5 text-sm rounded-md gap-1.5',
-      md: 'px-4 py-2 text-sm rounded-lg gap-2',
-      lg: 'px-6 py-3 text-base rounded-lg gap-2',
+      xs: 'px-2 py-1 text-xs rounded-md gap-1 h-7',
+      sm: 'px-3 py-1.5 text-sm rounded-lg gap-1.5 h-8',
+      md: 'px-4 py-2 text-sm rounded-lg gap-2 h-10',
+      lg: 'px-6 py-3 text-base rounded-lg gap-2 h-12',
     };
 
     const variantClasses = {
       primary: [
-        'bg-blue-600 text-white hover:bg-blue-700',
-        'focus:ring-blue-500 active:bg-blue-800',
+        'bg-primary-600 text-white hover:bg-primary-700',
+        'focus:ring-primary-500 active:bg-primary-800',
         'shadow-sm hover:shadow-md',
       ],
       secondary: [
-        'bg-gray-100 text-gray-900 hover:bg-gray-200',
-        'focus:ring-gray-500 active:bg-gray-300',
-        'border border-gray-300',
+        'bg-surface text-text-primary hover:bg-surface-hover',
+        'focus:ring-border-focus active:bg-surface-active',
+        'border-border hover:border-border-hover',
+        'shadow-sm hover:shadow-md',
+      ],
+      outline: [
+        'bg-transparent text-text-primary hover:bg-surface-hover',
+        'focus:ring-border-focus active:bg-surface-active',
+        'border-border hover:border-border-hover',
       ],
       ghost: [
-        'bg-transparent text-gray-700 hover:bg-gray-100',
-        'focus:ring-gray-500 active:bg-gray-200',
+        'bg-transparent text-text-secondary hover:text-text-primary',
+        'focus:ring-border-focus active:bg-surface-active',
+        'hover:bg-surface-hover',
       ],
       danger: [
-        'bg-red-600 text-white hover:bg-red-700',
-        'focus:ring-red-500 active:bg-red-800',
+        'bg-error-600 text-white hover:bg-error-700',
+        'focus:ring-error-500 active:bg-error-800',
         'shadow-sm hover:shadow-md',
       ],
       success: [
-        'bg-green-600 text-white hover:bg-green-700',
-        'focus:ring-green-500 active:bg-green-800',
+        'bg-success-600 text-white hover:bg-success-700',
+        'focus:ring-success-500 active:bg-success-800',
         'shadow-sm hover:shadow-md',
       ],
     };

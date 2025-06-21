@@ -1,17 +1,22 @@
-import type { StorybookConfig } from "@storybook/nextjs";
+import type { StorybookConfig } from "@storybook/nextjs-vite";
 
 const config: StorybookConfig = {
-  stories: [
-    "../components/**/*.stories.@(js|jsx|mjs|ts|tsx)"
+  "stories": [
+    "../stories/**/*.mdx",
+    "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)"
   ],
-
-  addons: ["@storybook/addon-links", "@storybook/addon-a11y", "@storybook/addon-docs"],
-
-  framework: {
-    name: "@storybook/nextjs",
-    options: {},
+  "addons": [
+    "@chromatic-com/storybook",
+    "@storybook/addon-docs",
+    "@storybook/addon-a11y",
+    "@storybook/addon-vitest"
+  ],
+  "framework": {
+    "name": "@storybook/nextjs-vite",
+    "options": {}
   },
-
-  staticDirs: ["../public"]
+  "staticDirs": [
+    "../public"
+  ]
 };
 export default config;
