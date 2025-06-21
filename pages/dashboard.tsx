@@ -61,34 +61,40 @@ export default function Dashboard() {
     <>
       <Head>
         <title>Activities - Command Center</title>
+        <meta name="description" content="Manage your business operations with AI-powered tools" />
       </Head>
       <AppLayout>
-        <header className="bg-white border-b border-gray-200 px-6 py-4">
+        <header className="bg-white border-b border-gray-200 px-8 py-6">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-2xl font-semibold text-gray-900">Activities</h2>
-              <p className="text-sm text-gray-600">Manage your business operations</p>
+              <h1 className="text-3xl font-bold text-gray-900 mb-2">Activities</h1>
+              <p className="text-base text-gray-600">Manage your business operations with AI-powered tools</p>
             </div>
-            <button className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors">
+            <button 
+              className="bg-blue-600 text-white px-6 py-3 rounded-xl text-sm font-semibold hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200"
+              aria-label="Create new meta box"
+            >
               Create Meta Box
             </button>
           </div>
         </header>
 
-        <main className="flex-1 p-6 overflow-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {metaBoxes.map((metaBox) => (
-              <MetaBoxCard
-                key={metaBox.id}
-                id={metaBox.id}
-                icon={metaBox.icon}
-                title={metaBox.title}
-                description={metaBox.description}
-                color={metaBox.color}
-                stats={metaBox.stats}
-                href={`/${metaBox.id}`}
-              />
-            ))}
+        <main className="flex-1 bg-gray-50 p-8 overflow-auto">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {metaBoxes.map((metaBox) => (
+                <MetaBoxCard
+                  key={metaBox.id}
+                  id={metaBox.id}
+                  icon={metaBox.icon}
+                  title={metaBox.title}
+                  description={metaBox.description}
+                  color={metaBox.color}
+                  stats={metaBox.stats}
+                  href={`/${metaBox.id}`}
+                />
+              ))}
+            </div>
           </div>
         </main>
       </AppLayout>

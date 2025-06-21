@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/9</span>
+                <span class='fraction'>0/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>0/6</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>0/9</span>
             </div>
         
             
@@ -117,7 +117,25 @@
 <a name='L52'></a><a href='#L52'>52</a>
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -141,6 +159,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -179,45 +215,63 @@ const Sidebar: React.FC = <span class="cstat-no" title="statement not covered" >
   const router = <span class="cstat-no" title="statement not covered" >useRouter();</span>
 &nbsp;
   const menuItems = <span class="cstat-no" title="statement not covered" >[</span>
-    { icon: '🏠', label: 'Activities', href: '/dashboard' },
-    { icon: '🤖', label: 'Agents', href: '/agents' },
+    { icon: '🏠', label: 'Activities', href: '/dashboard', shortcut: '⌘1' },
+    { icon: '🤖', label: 'Agents', href: '/agents', shortcut: '⌘2' },
   ];
 &nbsp;
   return (
     &lt;div className="w-64 bg-white border-r border-gray-200 flex flex-col"&gt;
       {/* Logo */}
-      &lt;div className="p-6 border-b border-gray-200"&gt;
+      &lt;div className="px-6 py-8 border-b border-gray-200"&gt;
         &lt;h1 className="text-xl font-semibold text-gray-900"&gt;Command Center&lt;/h1&gt;
       &lt;/div&gt;
 &nbsp;
       {/* Navigation */}
-      &lt;nav className="flex-1 px-4 py-6"&gt;
-        &lt;ul className="space-y-2"&gt;
-          {menuItems.map(<span class="fstat-no" title="function not covered" >(i</span>tem) =&gt; (
-<span class="cstat-no" title="statement not covered" >            &lt;li key={item.label}&gt;</span>
-              &lt;Link
-                href={item.href}
-                className={`flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors ${
-                  router.pathname === item.href
-                    ? 'bg-blue-50 text-blue-700'
-                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
-                }`}
-              &gt;
-                &lt;span className="mr-3 text-lg"&gt;{item.icon}&lt;/span&gt;
-                {item.label}
-              &lt;/Link&gt;
-            &lt;/li&gt;
-          ))}
+      &lt;nav className="flex-1 px-4 py-8"&gt;
+        &lt;ul className="space-y-1"&gt;
+          {menuItems.map(<span class="fstat-no" title="function not covered" >(i</span>tem) =&gt; {
+            const isActive = <span class="cstat-no" title="statement not covered" >router.pathname === item.href;</span>
+<span class="cstat-no" title="statement not covered" >            return (</span>
+              &lt;li key={item.label}&gt;
+                &lt;Link
+                  href={item.href}
+                  className={`group flex items-center justify-between px-3 py-3 text-sm font-medium rounded-xl transition-all duration-200 ${
+                    isActive
+                      ? 'bg-blue-50 text-blue-700 border-l-4 border-blue-600'
+                      : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                  }`}
+                  aria-current={isActive ? 'page' : undefined}
+                &gt;
+                  &lt;div className="flex items-center space-x-3"&gt;
+                    &lt;span className="text-lg"&gt;{item.icon}&lt;/span&gt;
+                    &lt;span&gt;{item.label}&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;span className={`text-xs font-mono ${
+                    isActive ? 'text-blue-600' : 'text-gray-400 group-hover:text-gray-600'
+                  }`}&gt;
+                    {item.shortcut}
+                  &lt;/span&gt;
+                &lt;/Link&gt;
+              &lt;/li&gt;
+            );
+          })}
         &lt;/ul&gt;
       &lt;/nav&gt;
 &nbsp;
       {/* User Profile */}
       &lt;div className="p-4 border-t border-gray-200"&gt;
-        &lt;div className="flex items-center"&gt;
-          &lt;div className="w-8 h-8 bg-gray-300 rounded-full mr-3"&gt;&lt;/div&gt;
-          &lt;div&gt;
-            &lt;p className="text-sm font-medium text-gray-900"&gt;John Doe&lt;/p&gt;
-            &lt;p className="text-xs text-gray-500"&gt;john@company.com&lt;/p&gt;
+        &lt;div className="flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-50 transition-colors cursor-pointer group"&gt;
+          &lt;div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-sm font-medium"&gt;
+            JD
+          &lt;/div&gt;
+          &lt;div className="flex-1 min-w-0"&gt;
+            &lt;p className="text-sm font-medium text-gray-900 truncate"&gt;John Doe&lt;/p&gt;
+            &lt;p className="text-xs text-gray-500 truncate"&gt;john@company.com&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div className="opacity-0 group-hover:opacity-100 transition-opacity"&gt;
+            &lt;svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
+              &lt;path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /&gt;
+            &lt;/svg&gt;
           &lt;/div&gt;
         &lt;/div&gt;
       &lt;/div&gt;
@@ -232,7 +286,7 @@ const Sidebar: React.FC = <span class="cstat-no" title="statement not covered" >
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-20T18:04:45.037Z
+                at 2025-06-21T05:09:28.562Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

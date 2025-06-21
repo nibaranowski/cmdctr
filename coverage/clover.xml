@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1750442685109" clover="3.2.0">
-  <project timestamp="1750442685109" name="All files">
-    <metrics statements="3536" coveredstatements="11" conditionals="1588" coveredconditionals="23" methods="806" coveredmethods="1" elements="5930" coveredelements="35" complexity="0" loc="3536" ncloc="3536" packages="18" files="137" classes="137"/>
+<coverage generated="1750482568633" clover="3.2.0">
+  <project timestamp="1750482568634" name="All files">
+    <metrics statements="3542" coveredstatements="5" conditionals="1592" coveredconditionals="0" methods="806" coveredmethods="1" elements="5940" coveredelements="6" complexity="0" loc="3542" ncloc="3542" packages="18" files="137" classes="137"/>
     <package name="components">
-      <metrics statements="155" coveredstatements="0" conditionals="36" coveredconditionals="0" methods="32" coveredmethods="0"/>
+      <metrics statements="160" coveredstatements="5" conditionals="36" coveredconditionals="0" methods="32" coveredmethods="1"/>
       <file name="AgentPanel.stories.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/AgentPanel.stories.tsx">
         <metrics statements="7" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="3" count="0" type="stmt"/>
@@ -151,23 +151,28 @@
         <line num="117" count="0" type="stmt"/>
       </file>
       <file name="MetaBoxCard.stories.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/MetaBoxCard.stories.tsx">
-        <metrics statements="9" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="13" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="3" count="0" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="59" count="0" type="stmt"/>
-        <line num="71" count="0" type="stmt"/>
-        <line num="83" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="119" count="0" type="stmt"/>
+        <line num="135" count="0" type="stmt"/>
+        <line num="151" count="0" type="stmt"/>
+        <line num="164" count="0" type="stmt"/>
+        <line num="177" count="0" type="stmt"/>
+        <line num="202" count="0" type="stmt"/>
+        <line num="227" count="0" type="stmt"/>
+        <line num="243" count="0" type="stmt"/>
       </file>
       <file name="MetaBoxCard.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/MetaBoxCard.tsx">
-        <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
-        <line num="2" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="57" count="0" type="stmt"/>
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="77" count="16" type="stmt"/>
       </file>
       <file name="Modal.stories.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/Modal.stories.tsx">
         <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -209,7 +214,7 @@
       </file>
     </package>
     <package name="components.layout">
-      <metrics statements="26" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
+      <metrics statements="27" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="3" coveredmethods="0"/>
       <file name="AppLayout.stories.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/layout/AppLayout.stories.tsx">
         <metrics statements="7" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="4" count="0" type="stmt"/>
@@ -238,7 +243,7 @@
         <line num="57" count="0" type="stmt"/>
       </file>
       <file name="Sidebar.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/layout/Sidebar.tsx">
-        <metrics statements="8" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <metrics statements="9" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
         <line num="3" count="0" type="stmt"/>
@@ -246,7 +251,8 @@
         <line num="6" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
-        <line num="55" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
       </file>
     </package>
     <package name="components.metabox">
@@ -832,7 +838,7 @@
       </file>
     </package>
     <package name="components.ui">
-      <metrics statements="326" coveredstatements="11" conditionals="240" coveredconditionals="23" methods="59" coveredmethods="1"/>
+      <metrics statements="326" coveredstatements="0" conditionals="240" coveredconditionals="0" methods="59" coveredmethods="0"/>
       <file name="Accordion.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/ui/Accordion.tsx">
         <metrics statements="49" coveredstatements="0" conditionals="37" coveredconditionals="0" methods="10" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
@@ -963,18 +969,18 @@
         <line num="264" count="0" type="stmt"/>
       </file>
       <file name="Card.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/ui/Card.tsx">
-        <metrics statements="11" coveredstatements="11" conditionals="23" coveredconditionals="23" methods="1" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="27" count="25" type="stmt"/>
-        <line num="37" count="25" type="stmt"/>
-        <line num="66" count="25" type="stmt"/>
-        <line num="73" count="25" type="cond" truecount="2" falsecount="0"/>
-        <line num="80" count="25" type="stmt"/>
-        <line num="88" count="25" type="cond" truecount="1" falsecount="0"/>
-        <line num="129" count="1" type="stmt"/>
-        <line num="131" count="25" type="stmt"/>
+        <metrics statements="11" coveredstatements="0" conditionals="23" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="73" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="80" count="0" type="stmt"/>
+        <line num="88" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="129" count="0" type="stmt"/>
+        <line num="131" count="0" type="stmt"/>
       </file>
       <file name="Dropdown.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/ui/Dropdown.tsx">
         <metrics statements="53" coveredstatements="0" conditionals="48" coveredconditionals="0" methods="14" coveredmethods="0"/>
@@ -3073,7 +3079,7 @@
         <line num="6" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
-        <line num="81" count="0" type="stmt"/>
+        <line num="86" count="0" type="stmt"/>
       </file>
       <file name="fundraising.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/pages/fundraising.tsx">
         <metrics statements="32" coveredstatements="0" conditionals="14" coveredconditionals="0" methods="11" coveredmethods="0"/>
