@@ -1,15 +1,21 @@
-import type { Meta, StoryObj } from '@storybook/nextjs';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { MetaBox } from '../../models/MetaBox';
 
 import { MetaBoxWorkspace } from './MetaBoxWorkspace';
 import { CoreObject } from './types';
+import { fundraisingManifest } from '../../types/metaBoxManifest';
 
 const meta: Meta<typeof MetaBoxWorkspace> = {
   title: 'MetaBox/MetaBoxWorkspace',
   component: MetaBoxWorkspace,
   parameters: {
     layout: 'fullscreen',
+    docs: {
+      description: {
+        component: 'Universal meta box workspace shell with three-panel layout, schema-driven for all meta box types.',
+      },
+    },
   },
   tags: ['autodocs'],
   argTypes: {
@@ -37,7 +43,7 @@ const meta: Meta<typeof MetaBoxWorkspace> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof MetaBoxWorkspace>;
 
 // Mock data
 const mockMetaBox = new MetaBox({
@@ -245,9 +251,54 @@ const productCoreObjects: CoreObject[] = [
 
 export const Default: Story = {
   args: {
-    metaBox: mockMetaBox,
-    coreObjects: mockCoreObjects,
-    userId: 'user_1',
+    manifest: fundraisingManifest,
+  },
+};
+
+export const Loading: Story = {
+  render: () => <div className="flex h-screen items-center justify-center text-gray-500 text-lg">Loading workspace...</div>,
+};
+
+export const Error: Story = {
+  render: () => <div className="flex h-screen items-center justify-center text-red-600 text-lg">Failed to load workspace</div>,
+};
+
+export const Empty: Story = {
+  args: {
+    manifest: { ...fundraisingManifest, phases: [], agents: [], fields: [] },
+  },
+};
+
+export const KanbanView: Story = {
+  args: {
+    manifest: fundraisingManifest,
+  },
+  render: (args) => <MetaBoxWorkspace {...args} />,
+};
+
+export const ListView: Story = {
+  args: {
+    manifest: fundraisingManifest,
+  },
+  render: (args) => {
+    // Simulate list view by default
+    return <MetaBoxWorkspace {...args} />;
+  },
+};
+
+export const DetailPanelOpen: Story = {
+  args: {
+    manifest: fundraisingManifest,
+  },
+  render: (args) => {
+    // Simulate detail panel open by setting selectedCoreObject
+    // This is a placeholder; real implementation will wire up selection state
+    return (
+      <div className="relative">
+        <MetaBoxWorkspace {...args} />
+        <div className="absolute top-0 right-0 w-[420px] h-full bg-white border-l border-gray-200 shadow-xl flex items-center justify-center text-gray-700">Detail/Activity Panel (mock)</div>
+      </div>
+    );
   },
 };
 

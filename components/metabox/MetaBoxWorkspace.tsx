@@ -10,191 +10,130 @@ import { MetaBoxKanbanView } from './MetaBoxKanbanView';
 import { MetaBoxListView } from './MetaBoxListView';
 import { CoreObject } from './types';
 import { ViewToggle } from './ViewToggle';
+import { MetaBoxManifest } from '../../types/metaBoxManifest';
+import PhasePanel from './PhasePanel';
 
 interface MetaBoxWorkspaceProps {
-  metaBox: MetaBox;
-  userId: string;
-  onSave: (metaBox: MetaBox) => Promise<void>;
-  coreObjects?: CoreObject[];
-  onObjectUpdate?: (objectId: string, updates: Partial<CoreObject>) => Promise<void>;
-  onObjectCreate?: (object: Omit<CoreObject, 'id' | 'created_at' | 'updated_at'>) => Promise<void>;
-  onObjectDelete?: (objectId: string) => Promise<void>;
+  manifest: MetaBoxManifest;
+  onPhaseAction?: (phaseId: string, action: 'complete' | 'revert' | 'trigger') => void;
+  onAgentMessage?: (phaseId: string, message: string) => void;
 }
 
-type ViewMode = 'kanban' | 'list';
-
-export const MetaBoxWorkspace: React.FC<MetaBoxWorkspaceProps> = ({
-  metaBox,
-  userId,
-  onSave,
-  coreObjects = [],
-  onObjectUpdate,
-  onObjectCreate,
-  onObjectDelete
+const MetaBoxWorkspace: React.FC<MetaBoxWorkspaceProps> = ({
+  manifest,
+  onPhaseAction,
+  onAgentMessage,
 }) => {
-  // View state management with persistence
-  const [viewMode, setViewMode] = useLocalStorage<ViewMode>(
-    `metabox-${metaBox.id}-view-mode`,
-    'kanban'
-  );
-
-  // Selection state
-  const [selectedObjectId, setSelectedObjectId] = useState<string | null>(null);
-  const [isDetailPanelOpen, setIsDetailPanelOpen] = useState(false);
-
-  // Drag and drop state
-  const [draggedObjectId, setDraggedObjectId] = useState<string | null>(null);
-  const [isDragging, setIsDragging] = useState(false);
-
-  // Agent state
-  const [assignedAgents, setAssignedAgents] = useState<Record<string, string[]>>({});
-
-  // Check permissions
-  const canEdit = metaBox.canEdit(userId);
-  const canAccess = metaBox.canAccess(userId);
-
-  // Handle object selection
-  const handleObjectSelect = useCallback((objectId: string) => {
-    setSelectedObjectId(objectId);
-    setIsDetailPanelOpen(true);
-  }, []);
-
-  // Handle view toggle
-  const handleViewToggle = useCallback((newView: ViewMode) => {
-    setViewMode(newView);
-  }, [setViewMode]);
-
-  // Handle drag and drop
-  const handleDragStart = useCallback((objectId: string) => {
-    if (!canEdit) return;
-    
-    setDraggedObjectId(objectId);
-    setIsDragging(true);
-  }, [canEdit]);
-
-  const handleDragEnd = useCallback(() => {
-    setDraggedObjectId(null);
-    setIsDragging(false);
-  }, []);
-
-  const handleDrop = useCallback(async (targetPhase: string) => {
-    if (!draggedObjectId || !onObjectUpdate) return;
-
-    try {
-      await onObjectUpdate(draggedObjectId, { phase: targetPhase });
-    } catch (error) {
-      console.error('Failed to update object phase:', error);
-    } finally {
-      setDraggedObjectId(null);
-      setIsDragging(false);
-    }
-  }, [draggedObjectId, onObjectUpdate]);
-
-  // Handle agent assignment
-  const handleAgentAssign = useCallback(async (objectId: string, agentId: string) => {
-    if (!canEdit) return;
-
-    const currentAgents = assignedAgents[objectId] || [];
-    const newAgents = currentAgents.includes(agentId)
-      ? currentAgents.filter(id => id !== agentId)
-      : [...currentAgents, agentId];
-
-    setAssignedAgents(prev => ({
-      ...prev,
-      [objectId]: newAgents
-    }));
-  }, [assignedAgents, canEdit]);
-
-  // Close detail panel when no object is selected
-  useEffect(() => {
-    if (!selectedObjectId) {
-      setIsDetailPanelOpen(false);
-    }
-  }, [selectedObjectId]);
-
-  if (!canAccess) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <div className="text-center">
-          <h3 className="text-lg font-medium text-gray-900 mb-2">Access Denied</h3>
-          <p className="text-gray-600">You don't have permission to view this meta box.</p>
-        </div>
-      </div>
-    );
-  }
-
-  const selectedObject = coreObjects.find(obj => obj.id === selectedObjectId);
+  const [viewMode, setViewMode] = useState<'kanban' | 'list'>('kanban');
+  const [selectedItem, setSelectedItem] = useState<string | null>(null);
 
   return (
-    <div className="flex flex-col h-full bg-gray-50">
-      {/* Unified Header - Consistent across all meta box types */}
-      <MetaBoxHeader
-        metaBox={metaBox}
-        userId={userId}
-        onSave={onSave}
-        canEdit={canEdit}
-        viewMode={viewMode}
-        onViewToggle={handleViewToggle}
-        data-testid="metabox-header"
-      />
-
-      {/* Main Content Area */}
-      <div className="flex-1 flex overflow-hidden" data-testid="main-content">
-        {/* Main View - Kanban or List */}
-        <div className="flex-1 overflow-hidden">
-          {viewMode === 'kanban' ? (
-            <MetaBoxKanbanView
-              metaBox={metaBox}
-              coreObjects={coreObjects}
-              selectedObjectId={selectedObjectId}
-              draggedObjectId={draggedObjectId}
-              isDragging={isDragging}
-              canEdit={canEdit}
-              onObjectSelect={handleObjectSelect}
-              onDragStart={handleDragStart}
-              onDragEnd={handleDragEnd}
-              onDrop={handleDrop}
-              data-testid="kanban-view"
-            />
-          ) : (
-            <MetaBoxListView
-              metaBox={metaBox}
-              coreObjects={coreObjects}
-              selectedObjectId={selectedObjectId}
-              canEdit={canEdit}
-              onObjectSelect={handleObjectSelect}
-              onObjectUpdate={onObjectUpdate}
-              onObjectDelete={onObjectDelete}
-              data-testid="list-view"
-            />
-          )}
-        </div>
-
-        {/* Right-Side Detail Panel - Consistent structure */}
-        {isDetailPanelOpen && selectedObject && (
-          <MetaBoxDetailPanel
-            object={selectedObject}
-            metaBox={metaBox}
-            userId={userId}
-            canEdit={canEdit}
-            assignedAgents={assignedAgents[selectedObject.id] || []}
-            onClose={() => {
-              setSelectedObjectId(null);
-              setIsDetailPanelOpen(false);
-            }}
-            onAgentAssign={(agentId: string) => handleAgentAssign(selectedObject.id, agentId)}
-            onObjectUpdate={onObjectUpdate}
-            data-testid="detail-panel"
-          />
-        )}
+    <div className="flex h-screen bg-gray-50">
+      {/* Left Panel - Phases & Agents */}
+      <div className="w-80 bg-white border-r border-gray-200 flex flex-col">
+        <PhasePanel
+          manifest={manifest}
+          onPhaseAction={onPhaseAction}
+          onAgentMessage={onAgentMessage}
+        />
       </div>
 
-      {/* View Toggle - Always accessible */}
-      <ViewToggle
-        currentView={viewMode}
-        onViewChange={handleViewToggle}
-        className="fixed bottom-6 right-6 z-10"
-      />
+      {/* Main View - Kanban/List Toggle */}
+      <div className="flex-1 flex flex-col">
+        {/* Header with View Toggle */}
+        <div className="bg-white border-b border-gray-200 px-6 py-4">
+          <div className="flex items-center justify-between">
+            <h1 className="text-xl font-semibold text-gray-900">
+              {manifest.name} Workspace
+            </h1>
+            
+            {/* View Toggle */}
+            <div className="flex items-center space-x-1 bg-gray-100 rounded-lg p-1">
+              <button
+                onClick={() => setViewMode('kanban')}
+                className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
+                  viewMode === 'kanban'
+                    ? 'bg-white text-gray-900 shadow-sm'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                Kanban
+              </button>
+              <button
+                onClick={() => setViewMode('list')}
+                className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
+                  viewMode === 'list'
+                    ? 'bg-white text-gray-900 shadow-sm'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                List
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Main Content Area */}
+        <div className="flex-1 p-6">
+          {viewMode === 'kanban' ? (
+            <div className="bg-white rounded-lg border border-gray-200 p-6">
+              <h2 className="text-lg font-medium text-gray-900 mb-4">Kanban View</h2>
+              <p className="text-gray-600">
+                Kanban board implementation coming soon...
+              </p>
+            </div>
+          ) : (
+            <div className="bg-white rounded-lg border border-gray-200 p-6">
+              <h2 className="text-lg font-medium text-gray-900 mb-4">List View</h2>
+              <p className="text-gray-600">
+                List view implementation coming soon...
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Right Panel - Detail/Activity */}
+      <div className="w-96 bg-white border-l border-gray-200 flex flex-col">
+        <div className="p-6 border-b border-gray-200">
+          <h2 className="text-lg font-semibold text-gray-900 mb-2">
+            Details & Activity
+          </h2>
+          <p className="text-sm text-gray-600">
+            Select an item to view details
+          </p>
+        </div>
+        
+        <div className="flex-1 p-6">
+          {selectedItem ? (
+            <div>
+              <h3 className="font-medium text-gray-900 mb-4">Item Details</h3>
+              <p className="text-gray-600">
+                Detailed view for selected item coming soon...
+              </p>
+            </div>
+          ) : (
+            <div className="text-center text-gray-500 py-12">
+              <svg
+                className="mx-auto h-12 w-12 text-gray-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                />
+              </svg>
+              <p className="mt-2 text-sm">No item selected</p>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
-}; 
+};
+
+export default MetaBoxWorkspace; 
