@@ -28,11 +28,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     const baseClasses = [
       'inline-flex items-center justify-center font-medium',
-      'transition-all duration-200',
+      'transition-all duration-200 ease-out',
       'focus:outline-none focus:ring-2 focus:ring-offset-2',
       'disabled:opacity-50 disabled:cursor-not-allowed',
       'select-none transform hover:scale-[1.02] active:scale-[0.98]',
       'border border-transparent',
+      'relative overflow-hidden',
     ];
 
     const sizeClasses = {
@@ -47,6 +48,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         'bg-primary-600 text-white hover:bg-primary-700',
         'focus:ring-primary-500 active:bg-primary-800',
         'shadow-sm hover:shadow-md',
+        'before:absolute before:inset-0 before:bg-white before:opacity-0',
+        'before:hover:opacity-10 before:transition-opacity',
       ],
       secondary: [
         'bg-surface text-text-primary hover:bg-surface-hover',
@@ -58,11 +61,13 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         'bg-transparent text-text-primary hover:bg-surface-hover',
         'focus:ring-border-focus active:bg-surface-active',
         'border-border hover:border-border-hover',
+        'hover:shadow-sm',
       ],
       ghost: [
         'bg-transparent text-text-secondary hover:text-text-primary',
         'focus:ring-border-focus active:bg-surface-active',
         'hover:bg-surface-hover',
+        'hover:shadow-sm',
       ],
       danger: [
         'bg-error-600 text-white hover:bg-error-700',
@@ -93,17 +98,18 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         className={classes}
         disabled={isDisabled}
+        aria-disabled={isDisabled}
         {...props}
       >
         {loading && (
           <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
         )}
         {!loading && leftIcon && (
-          <span className="flex-shrink-0">{leftIcon}</span>
+          <span className="flex-shrink-0" aria-hidden="true">{leftIcon}</span>
         )}
         <span className="flex-shrink-0">{children}</span>
         {!loading && rightIcon && (
-          <span className="flex-shrink-0">{rightIcon}</span>
+          <span className="flex-shrink-0" aria-hidden="true">{rightIcon}</span>
         )}
       </button>
     );
