@@ -1,6 +1,6 @@
-import React from 'react';
-import Link from 'next/link';
 import { Zap, Github, Twitter, Linkedin, Mail } from 'lucide-react';
+import Link from 'next/link';
+import React from 'react';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();

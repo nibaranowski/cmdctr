@@ -1,5 +1,5 @@
-import React, { forwardRef, useState } from 'react';
 import { User } from 'lucide-react';
+import React, { forwardRef, useState } from 'react';
 
 export interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
   src?: string;

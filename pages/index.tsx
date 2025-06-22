@@ -1,14 +1,15 @@
+import Head from 'next/head';
 import React from 'react';
-import Header from '../components/landing/Header';
-import Hero from '../components/landing/Hero';
-import ValuePropCards from '../components/landing/ValuePropCards';
-import Testimonials from '../components/landing/Testimonials';
-import WhatSetsCmdctrApart from '../components/landing/WhatSetsCmdctrApart';
-import IntegrationGrid from '../components/landing/IntegrationGrid';
-import PersonaCards from '../components/landing/PersonaCards';
+
 import DemoCTA from '../components/landing/DemoCTA';
 import Footer from '../components/landing/Footer';
-import Head from 'next/head';
+import Header from '../components/landing/Header';
+import Hero from '../components/landing/Hero';
+import IntegrationGrid from '../components/landing/IntegrationGrid';
+import PersonaCards from '../components/landing/PersonaCards';
+import Testimonials from '../components/landing/Testimonials';
+import ValuePropCards from '../components/landing/ValuePropCards';
+import WhatSetsCmdctrApart from '../components/landing/WhatSetsCmdctrApart';
 
 const HomePage: React.FC = () => {
   return (

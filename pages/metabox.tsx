@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { MetaBox, META_BOX_TEMPLATES, MetaBoxType, MetaBoxPhase, MetaBoxTemplate } from '../models/MetaBox';
+import React, { useState, useEffect } from 'react';
+
 import { MetaBoxEditor } from '../components/metabox/MetaBoxEditor';
 import { MetaBoxWorkspace } from '../components/metabox/MetaBoxWorkspace';
+import { MetaBox, META_BOX_TEMPLATES, MetaBoxType, MetaBoxPhase, MetaBoxTemplate } from '../models/MetaBox';
 
 interface MetaBoxPageProps {
   user: {

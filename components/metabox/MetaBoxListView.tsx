@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+
 import { MetaBoxManifest, MetaBoxCoreObjectField } from '../../types/metaBoxManifest';
 
 interface CoreObject {
@@ -44,7 +45,7 @@ const MetaBoxListView: React.FC<MetaBoxListViewProps> = ({
   };
 
   const filteredAndSortedObjects = useMemo(() => {
-    let filtered = coreObjects.filter(obj => {
+    const filtered = coreObjects.filter(obj => {
       return Object.entries(filters).every(([field, value]) => {
         if (!value) return true;
         const objValue = obj[field];

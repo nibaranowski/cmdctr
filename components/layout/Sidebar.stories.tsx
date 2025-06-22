@@ -25,40 +25,40 @@ export const Default: Story = {
 
 export const HoverStates: Story = {
   args: {},
-//   play: async ({ canvasElement }) => {
-//     const canvas = within(canvasElement);
-//     const activitiesLink = canvas.getByText('Activities');
-//     const agentsLink = canvas.getByText('Agents');
-//     
-//     await expect(activitiesLink).toBeInTheDocument();
-//     await expect(agentsLink).toBeInTheDocument();
-//     
-//     // Test hover states
-//     await userEvent.hover(activitiesLink);
-//     await userEvent.hover(agentsLink);
-//   },
+  // play: async ({ canvasElement }) => {
+  //   const canvas = within(canvasElement);
+  //   const dashboardLink = canvas.getByText('Dashboard');
+  //   const agentsLink = canvas.getByText('Agents');
+  //   
+  //   await expect(dashboardLink).toBeInTheDocument();
+  //   await expect(agentsLink).toBeInTheDocument();
+  //   
+  //   // Test hover states
+  //   await userEvent.hover(dashboardLink);
+  //   await userEvent.hover(agentsLink);
+  // },
 };
 
 export const NavigationInteraction: Story = {
   args: {},
-//   play: async ({ canvasElement }) => {
-//     const canvas = within(canvasElement);
-//     const activitiesLink = canvas.getByText('Activities');
-//     const agentsLink = canvas.getByText('Agents');
-//     
-//     await userEvent.click(activitiesLink);
-//     await userEvent.click(agentsLink);
-//   },
+  // play: async ({ canvasElement }) => {
+  //   const canvas = within(canvasElement);
+  //   const dashboardLink = canvas.getByText('Dashboard');
+  //   const agentsLink = canvas.getByText('Agents');
+  //   
+  //   await userEvent.click(dashboardLink);
+  //   await userEvent.click(agentsLink);
+  // },
 };
 
 export const UserProfileSection: Story = {
   args: {},
-//   play: async ({ canvasElement }) => {
-//     const canvas = within(canvasElement);
-//     const userName = canvas.getByText('John Doe');
-//     const userEmail = canvas.getByText('john@company.com');
-//     
-//     await expect(userName).toBeInTheDocument();
-//     await expect(userEmail).toBeInTheDocument();
-//   },
+  // play: async ({ canvasElement }) => {
+  //   const canvas = within(canvasElement);
+  //   const userName = canvas.getByText('Nicolas Baranowski');
+  //   const userEmail = canvas.getByText('nicolas@company.com');
+  //   
+  //   await expect(userName).toBeInTheDocument();
+  //   await expect(userEmail).toBeInTheDocument();
+  // },
 }; 

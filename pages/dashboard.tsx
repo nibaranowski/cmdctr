@@ -61,23 +61,11 @@ export default function Dashboard() {
   return (
     <>
       <Head>
-        <title>Activities - Command Center</title>
+        <title>Dashboard - Command Center</title>
         <meta name="description" content="Manage your business operations with AI-powered tools" />
       </Head>
       <AppLayout>
-        <header className="bg-white border-b border-slate-200 px-8 py-6">
-          <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-semibold text-slate-800">Activities</h1>
-            <button 
-              className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors"
-              aria-label="Create new meta box"
-            >
-              Create Meta Box
-            </button>
-          </div>
-        </header>
-
-        <main className="flex-1 bg-slate-50 p-8 overflow-auto">
+        <main className="flex-1 bg-white p-8 overflow-auto">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {metaBoxes.map((metaBox) => (

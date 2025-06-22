@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">6.06% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/99</span>
+                <span class='fraction'>0/99</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">6.41% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>5/78</span>
+                <span class='fraction'>0/78</span>
             </div>
         
             
@@ -374,7 +374,7 @@
 <a name='L309'></a><a href='#L309'>309</a>
 <a name='L310'></a><a href='#L310'>310</a>
 <a name='L311'></a><a href='#L311'>311</a>
-<a name='L312'></a><a href='#L312'>312</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L312'></a><a href='#L312'>312</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -434,7 +434,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -445,7 +445,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -455,7 +455,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -646,7 +646,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -685,7 +685,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { z } from 'zod';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { z } from <span class="cstat-no" title="statement not covered" >'zod';</span>
 &nbsp;
 // Data interfaces (for serialization/deserialization)
 export interface MetaBoxPhaseData {
@@ -745,7 +745,7 @@ export interface MetaBox extends MetaBoxData {
 }
 &nbsp;
 // Zod schemas
-export const <span class="cstat-no" title="statement not covered" >MetaBoxPhaseSchema </span>= z.object({
+export const <span class="cstat-no" title="statement not covered" >MetaBoxPhaseSchema </span>= <span class="cstat-no" title="statement not covered" >z.object({</span>
   id: z.string().min(1),
   name: z.string().min(1),
   order: z.number().int().nonnegative(),
@@ -756,7 +756,7 @@ export const <span class="cstat-no" title="statement not covered" >MetaBoxPhaseS
   updated_at: z.string().datetime()
 });
 &nbsp;
-export const <span class="cstat-no" title="statement not covered" >MetaBoxTemplateSchema </span>= z.object({
+export const <span class="cstat-no" title="statement not covered" >MetaBoxTemplateSchema </span>= <span class="cstat-no" title="statement not covered" >z.object({</span>
   id: z.string().min(1),
   name: z.string().min(1),
   description: z.string(),
@@ -766,7 +766,7 @@ export const <span class="cstat-no" title="statement not covered" >MetaBoxTempla
   version: z.number().int().positive()
 });
 &nbsp;
-export const MetaBoxSchema = z.object({
+export const <span class="cstat-no" title="statement not covered" >MetaBoxSchema </span>= <span class="cstat-no" title="statement not covered" >z.object({</span>
   id: z.string().min(1),
   name: z.string().min(1),
   description: z.string().optional(),
@@ -957,7 +957,7 @@ export class <span class="cstat-no" title="statement not covered" >MetaBoxPhase 
 }
 &nbsp;
 // Predefined templates
-export const <span class="cstat-no" title="statement not covered" >META_BOX_TEMPLATES </span>= {
+export const <span class="cstat-no" title="statement not covered" >META_BOX_TEMPLATES </span>= <span class="cstat-no" title="statement not covered" >{</span>
   fundraising: {
     name: 'Fundraising',
     description: 'Complete fundraising pipeline with investor research and outreach',
@@ -1003,7 +1003,7 @@ export type MetaBoxType = keyof typeof META_BOX_TEMPLATES; </pre></td></tr></tab
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-22T15:12:22.567Z
+                at 2025-06-22T16:07:14.428Z
             </div>
         <script src="../prettify.js"></script>
         <script>

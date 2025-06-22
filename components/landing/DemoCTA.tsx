@@ -1,6 +1,7 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Play, ArrowRight } from 'lucide-react';
+import React from 'react';
+
 import Button from '../ui/Button';
 
 const DemoCTA: React.FC = () => {

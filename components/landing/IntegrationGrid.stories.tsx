@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import IntegrationGrid from './IntegrationGrid';
 
 const meta: Meta<typeof IntegrationGrid> = {

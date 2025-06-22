@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Zap, Menu, X } from 'lucide-react';
+import Link from 'next/link';
+import React, { useState } from 'react';
+
 import Button from '../ui/Button';
 
 const Header: React.FC = () => {
@@ -36,10 +37,14 @@ const Header: React.FC = () => {
           </nav>
 
           <div className="hidden md:flex items-center gap-2">
-            <Button variant="ghost" size="sm">
-              Log in
-            </Button>
-            <Button size="sm">Get Started</Button>
+            <Link href="/login">
+              <Button variant="ghost" size="sm">
+                Log in
+              </Button>
+            </Link>
+            <Link href="/dashboard">
+              <Button size="sm">Get Started</Button>
+            </Link>
           </div>
 
           <div className="md:hidden">
@@ -67,10 +72,14 @@ const Header: React.FC = () => {
                 {link.label}
               </Link>
             ))}
-            <Button variant="ghost" size="sm">
-              Log in
-            </Button>
-            <Button size="sm">Get Started</Button>
+            <Link href="/login">
+              <Button variant="ghost" size="sm">
+                Log in
+              </Button>
+            </Link>
+            <Link href="/dashboard">
+              <Button size="sm">Get Started</Button>
+            </Link>
           </nav>
         </motion.div>
       )}

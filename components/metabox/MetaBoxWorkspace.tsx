@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+
 import { MetaBoxManifest } from '../../types/metaBoxManifest';
-import PhasePanel from './PhasePanel';
+
 import MetaBoxKanbanView from './MetaBoxKanbanView';
 import MetaBoxListView from './MetaBoxListView';
+import PhasePanel from './PhasePanel';
 
 interface CoreObject {
   id: string;

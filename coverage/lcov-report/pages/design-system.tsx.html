@@ -654,7 +654,6 @@
 <a name='L589'></a><a href='#L589'>589</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -667,21 +666,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1241,7 +1241,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use client';
 &nbsp;
-import React, { useState } from <span class="cstat-no" title="statement not covered" >'react';</span>
 import { motion } from <span class="cstat-no" title="statement not covered" >'framer-motion';</span>
 import { 
   Palette, 
@@ -1255,21 +1254,22 @@ import {
   User,
   Mail
 } from <span class="cstat-no" title="statement not covered" >'lucide-react';</span>
+import React, { useState } from <span class="cstat-no" title="statement not covered" >'react';</span>
 &nbsp;
+import Accordion from <span class="cstat-no" title="statement not covered" >'../components/ui/Accordion';</span>
+import Avatar from <span class="cstat-no" title="statement not covered" >'../components/ui/Avatar';</span>
+import Badge from <span class="cstat-no" title="statement not covered" >'../components/ui/Badge';</span>
 import Button from <span class="cstat-no" title="statement not covered" >'../components/ui/Button';</span>
 import Card from <span class="cstat-no" title="statement not covered" >'../components/ui/Card';</span>
-import Badge from <span class="cstat-no" title="statement not covered" >'../components/ui/Badge';</span>
-import Tooltip from <span class="cstat-no" title="statement not covered" >'../components/ui/Tooltip';</span>
-import Toast from <span class="cstat-no" title="statement not covered" >'../components/ui/Toast';</span>
-import Tabs from <span class="cstat-no" title="statement not covered" >'../components/ui/Tabs';</span>
-import Accordion from <span class="cstat-no" title="statement not covered" >'../components/ui/Accordion';</span>
 import Dropdown from <span class="cstat-no" title="statement not covered" >'../components/ui/Dropdown';</span>
 import Input from <span class="cstat-no" title="statement not covered" >'../components/ui/Input';</span>
 import Modal from <span class="cstat-no" title="statement not covered" >'../components/ui/Modal';</span>
-import ThemeToggle from <span class="cstat-no" title="statement not covered" >'../components/ui/ThemeToggle';</span>
-import Avatar from <span class="cstat-no" title="statement not covered" >'../components/ui/Avatar';</span>
 import Progress from <span class="cstat-no" title="statement not covered" >'../components/ui/Progress';</span>
+import Tabs from <span class="cstat-no" title="statement not covered" >'../components/ui/Tabs';</span>
 import { useTheme } from '../components/ui/ThemeProvider';
+import ThemeToggle from <span class="cstat-no" title="statement not covered" >'../components/ui/ThemeToggle';</span>
+import Toast from <span class="cstat-no" title="statement not covered" >'../components/ui/Toast';</span>
+import Tooltip from <span class="cstat-no" title="statement not covered" >'../components/ui/Tooltip';</span>
 &nbsp;
 const DesignSystemPage: React.FC = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =&gt; {</span></span>
   const [showModal, setShowModal] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
@@ -1834,7 +1834,7 @@ const DesignSystemPage: React.FC = <span class="cstat-no" title="statement not c
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-22T15:12:22.567Z
+                at 2025-06-22T16:07:14.428Z
             </div>
         <script src="../prettify.js"></script>
         <script>

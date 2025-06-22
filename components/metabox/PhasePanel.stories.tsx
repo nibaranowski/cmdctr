@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import PhasePanel from './PhasePanel';
+
 import { fundraisingManifest } from '../../types/metaBoxManifest';
+
+import PhasePanel from './PhasePanel';
 
 const meta: Meta<typeof PhasePanel> = {
   title: 'MetaBox/PhasePanel',

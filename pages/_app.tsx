@@ -3,8 +3,8 @@ import { AppProps } from 'next/app'
 import posthog from 'posthog-js'
 import { useEffect } from 'react'
 
-import { logInfo, logError } from '../lib/betterstack'
 import { ThemeProvider } from '../components/ui/ThemeProvider'
+import { logInfo, logError } from '../lib/betterstack'
 import '../styles/globals.css'
 import '../styles/design-system.css'
 

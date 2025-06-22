@@ -1,6 +1,5 @@
 'use client';
 
-import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Palette, 
@@ -14,21 +13,22 @@ import {
   User,
   Mail
 } from 'lucide-react';
+import React, { useState } from 'react';
 
+import Accordion from '../components/ui/Accordion';
+import Avatar from '../components/ui/Avatar';
+import Badge from '../components/ui/Badge';
 import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
-import Badge from '../components/ui/Badge';
-import Tooltip from '../components/ui/Tooltip';
-import Toast from '../components/ui/Toast';
-import Tabs from '../components/ui/Tabs';
-import Accordion from '../components/ui/Accordion';
 import Dropdown from '../components/ui/Dropdown';
 import Input from '../components/ui/Input';
 import Modal from '../components/ui/Modal';
-import ThemeToggle from '../components/ui/ThemeToggle';
-import Avatar from '../components/ui/Avatar';
 import Progress from '../components/ui/Progress';
+import Tabs from '../components/ui/Tabs';
 import { useTheme } from '../components/ui/ThemeProvider';
+import ThemeToggle from '../components/ui/ThemeToggle';
+import Toast from '../components/ui/Toast';
+import Tooltip from '../components/ui/Tooltip';
 
 const DesignSystemPage: React.FC = () => {
   const [showModal, setShowModal] = useState(false);

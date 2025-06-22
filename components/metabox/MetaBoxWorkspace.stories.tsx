@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { MetaBox } from '../../models/MetaBox';
+import { fundraisingManifest } from '../../types/metaBoxManifest';
 
 import { MetaBoxWorkspace } from './MetaBoxWorkspace';
 import { CoreObject } from './types';
-import { fundraisingManifest } from '../../types/metaBoxManifest';
 
 const meta: Meta<typeof MetaBoxWorkspace> = {
   title: 'MetaBox/MetaBoxWorkspace',

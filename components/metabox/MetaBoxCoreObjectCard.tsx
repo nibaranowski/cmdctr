@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { MetaBoxManifest } from '../../types/metaBoxManifest';
 
 interface CoreObject {

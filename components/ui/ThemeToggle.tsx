@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import React from 'react';
+
 import { useTheme } from './ThemeProvider';
 
 interface ThemeToggleProps {

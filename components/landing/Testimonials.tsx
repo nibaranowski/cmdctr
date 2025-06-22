@@ -1,6 +1,7 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Quote } from 'lucide-react';
+import React from 'react';
+
 import Card from '../ui/Card';
 
 const logos = [

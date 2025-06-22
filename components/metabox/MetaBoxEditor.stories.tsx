@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { MetaBoxEditor } from './MetaBoxEditor';
+
 import { MetaBox } from '../../models/MetaBox';
+
+import { MetaBoxEditor } from './MetaBoxEditor';
 
 const meta: Meta<typeof MetaBoxEditor> = {
   title: 'MetaBox/MetaBoxEditor',

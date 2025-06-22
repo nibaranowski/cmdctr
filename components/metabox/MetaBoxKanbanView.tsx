@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react';
+
 import { MetaBoxManifest } from '../../types/metaBoxManifest';
+
 import MetaBoxCoreObjectCard from './MetaBoxCoreObjectCard';
 
 interface CoreObject {

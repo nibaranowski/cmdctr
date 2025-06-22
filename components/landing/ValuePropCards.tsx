@@ -1,8 +1,9 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { DollarSign, Users, ShoppingCart, ToyBrick, ArrowRight } from 'lucide-react';
-import Card from '../ui/Card';
+import React from 'react';
+
 import Button from '../ui/Button';
+import Card from '../ui/Card';
 
 const valueProps = [
   {

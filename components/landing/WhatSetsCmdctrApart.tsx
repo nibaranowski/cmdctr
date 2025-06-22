@@ -1,8 +1,9 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Grid, Zap, Shield, Share2, ArrowRight } from 'lucide-react';
-import Card from '../ui/Card';
+import React from 'react';
+
 import Button from '../ui/Button';
+import Card from '../ui/Card';
 
 const features = [
   {
