@@ -9,8 +9,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return handleGet(req, res);
   } else if (req.method === 'POST') {
     return handlePost(req, res);
+  } else if (req.method === 'PUT') {
+    return handlePut(req, res);
+  } else if (req.method === 'DELETE') {
+    return handleDelete(req, res);
   } else {
-    res.setHeader('Allow', ['GET', 'POST']);
+    res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE']);
     res.status(405).json({ error: 'Method not allowed' });
   }
 }
@@ -95,6 +99,109 @@ async function handlePost(req: NextApiRequest, res: NextApiResponse) {
     }
   } catch (error) {
     console.error('Error creating meta box:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
+
+async function handlePut(req: NextApiRequest, res: NextApiResponse) {
+  try {
+    const { id, user_id, ...updateData } = req.body;
+
+    if (!id || !user_id) {
+      return res.status(400).json({ error: 'id and user_id are required' });
+    }
+
+    await dbConnect();
+    const MetaBoxModel = mongoose.model('MetaBox', new mongoose.Schema({}));
+    const collection = MetaBoxModel.collection;
+
+    // Check if meta box exists and user has permission to edit
+    const existingMetaBox = await collection.findOne({ id });
+    if (!existingMetaBox) {
+      return res.status(404).json({ error: 'Meta box not found' });
+    }
+
+    if (existingMetaBox.owner_id !== user_id) {
+      return res.status(403).json({ error: 'Permission denied' });
+    }
+
+    // Validate the update data
+    const validationResult = MetaBoxSchema.partial().safeParse(updateData);
+    if (!validationResult.success) {
+      return res.status(400).json({ 
+        error: 'Invalid update data',
+        details: validationResult.error.errors
+      });
+    }
+
+    // Update the meta box
+    const result = await collection.updateOne(
+      { id },
+      { 
+        $set: {
+          ...updateData,
+          updated_at: new Date().toISOString(),
+          version: (existingMetaBox.version || 1) + 1
+        }
+      }
+    );
+
+    if (result.modifiedCount > 0) {
+      // Fetch updated meta box
+      const updatedMetaBox = await collection.findOne({ id });
+      if (updatedMetaBox && updatedMetaBox.name && updatedMetaBox.company_id) {
+        res.status(200).json({
+          success: true,
+          data: new MetaBox(updatedMetaBox as any),
+          message: 'Meta box updated successfully'
+        });
+      } else {
+        res.status(500).json({ error: 'Failed to fetch updated meta box' });
+      }
+    } else {
+      res.status(500).json({ error: 'Failed to update meta box' });
+    }
+  } catch (error) {
+    console.error('Error updating meta box:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
+
+async function handleDelete(req: NextApiRequest, res: NextApiResponse) {
+  try {
+    const { id, user_id } = req.body;
+
+    if (!id || !user_id) {
+      return res.status(400).json({ error: 'id and user_id are required' });
+    }
+
+    await dbConnect();
+    const MetaBoxModel = mongoose.model('MetaBox', new mongoose.Schema({}));
+    const collection = MetaBoxModel.collection;
+
+    // Check if meta box exists and user has permission to delete
+    const existingMetaBox = await collection.findOne({ id });
+    if (!existingMetaBox) {
+      return res.status(404).json({ error: 'Meta box not found' });
+    }
+
+    if (existingMetaBox.owner_id !== user_id) {
+      return res.status(403).json({ error: 'Permission denied' });
+    }
+
+    // Delete the meta box
+    const result = await collection.deleteOne({ id });
+
+    if (result.deletedCount > 0) {
+      res.status(200).json({
+        success: true,
+        message: 'Meta box deleted successfully'
+      });
+    } else {
+      res.status(500).json({ error: 'Failed to delete meta box' });
+    }
+  } catch (error) {
+    console.error('Error deleting meta box:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 } 
