@@ -1,22 +1,19 @@
-import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import type { Meta, StoryObj } from '@storybook/react';
 // import { within, userEvent, expect } from '@storybook/test';
 
 import Sidebar from './Sidebar';
 
-const meta = {
-  title: 'Components/Layout/Sidebar',
+const meta: Meta<typeof Sidebar> = {
+  title: 'Layout/Sidebar',
   component: Sidebar,
   parameters: {
     layout: 'fullscreen',
   },
   tags: ['autodocs'],
-  decorators: [
-    (Story) => (
-      <div style={{ height: '100vh', display: 'flex' }}>
-        <Story />
-      </div>
-    ),
-  ],
+  // We can add decorators here to provide a mock router if needed for active states
+  // decorators: [
+  //   (Story) => <MemoryRouter initialEntries={['/dashboard']}><Story /></MemoryRouter>,
+  // ],
 } satisfies Meta<typeof Sidebar>;
 
 export default meta;
