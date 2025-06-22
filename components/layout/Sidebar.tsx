@@ -76,9 +76,11 @@ const Sidebar: React.FC = () => {
       {/* User Profile */}
       <div className="border-t border-slate-200 p-4">
         <div className="flex items-center gap-3">
-          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-purple-600 text-sm font-medium text-white">
-            NB
-          </div>
+          <img
+            className="h-9 w-9 rounded-full object-cover"
+            src="https://randomuser.me/api/portraits/women/44.jpg"
+            alt="User avatar"
+          />
           <div className="flex-1">
             <p className="truncate text-sm font-semibold text-slate-800">Nicolas Baranowski</p>
             <p className="truncate text-xs text-slate-500">nicolas@company.com</p>
