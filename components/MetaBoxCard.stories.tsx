@@ -1,50 +1,48 @@
-import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-
+import type { Meta, StoryObj } from '@storybook/react';
+import { BarChartIcon, PersonIcon } from '@radix-ui/react-icons';
 import MetaBoxCard from './MetaBoxCard';
 
 const meta: Meta<typeof MetaBoxCard> = {
-  title: 'Dashboard/MetaBoxCard',
+  title: 'Components/MetaBoxCard',
   component: MetaBoxCard,
   parameters: {
-    layout: 'padded',
-    docs: {
-      description: {
-        component: 'Refined MetaBoxCard component following Linear\'s design principles with proper spacing, typography, and interactions.',
-      },
+    layout: 'centered',
+    backgrounds: {
+      default: 'slate',
+      values: [
+        { name: 'slate', value: '#f1f5f9' },
+        { name: 'white', value: '#ffffff' },
+      ],
     },
   },
+  tags: ['autodocs'],
   argTypes: {
-    id: { control: 'text' },
-    icon: { control: 'text' },
     title: { control: 'text' },
     description: { control: 'text' },
-    color: {
-      control: 'select',
-      options: ['bg-blue-500', 'bg-green-500', 'bg-purple-500', 'bg-orange-500', 'bg-pink-500', 'bg-gray-500'],
-    },
     stats: { control: 'object' },
-    href: { control: 'text' },
   },
-  decorators: [
-    (Story: any) => (
-      <div className="max-w-sm">
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 export default meta;
-type Story = StoryObj<typeof MetaBoxCard>;
+type Story = StoryObj<typeof meta>;
 
-// Default state
 export const Default: Story = {
   args: {
+    id: 'fundraising',
+    icon: BarChartIcon,
+    title: 'Fundraising',
+    description: 'Investor pipeline and deal tracking',
+    stats: { active: 8, completed: 3 },
+    href: '/fundraising',
+  },
+};
+
+export const Hiring: Story = {
+  args: {
     id: 'hiring',
-    icon: '👥',
+    icon: PersonIcon,
     title: 'Hiring',
     description: 'AI-powered candidate sourcing and screening',
-    color: 'bg-blue-500',
     stats: { active: 12, completed: 8 },
     href: '/hiring',
   },
