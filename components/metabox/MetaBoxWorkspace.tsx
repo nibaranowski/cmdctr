@@ -23,7 +23,7 @@ interface MetaBoxWorkspaceProps {
   onObjectMove?: (objectId: string, fromPhase: string, toPhase: string) => void;
 }
 
-const MetaBoxWorkspace: React.FC<MetaBoxWorkspaceProps> = ({
+export const MetaBoxWorkspace: React.FC<MetaBoxWorkspaceProps> = ({
   manifest,
   onPhaseAction,
   onAgentMessage,
@@ -202,6 +202,4 @@ const MetaBoxWorkspace: React.FC<MetaBoxWorkspaceProps> = ({
       </div>
     </div>
   );
-};
-
-export default MetaBoxWorkspace; 
+}; 

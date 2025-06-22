@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/DYyQfv1BOfDExwpSfHSvT/_buildManifest.js",
-    "static/DYyQfv1BOfDExwpSfHSvT/_ssgManifest.js"
+    "static/QVXZUOVXXyO8wdBgvTBeB/_buildManifest.js",
+    "static/QVXZUOVXXyO8wdBgvTBeB/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "pages": {
@@ -15,13 +15,15 @@
       "static/chunks/framework-64ad27b21261a9ce.js",
       "static/chunks/main-0933411d6fd59fa1.js",
       "static/chunks/996-1b55609011aad234.js",
-      "static/chunks/pages/index-6d1670861518e034.js"
+      "static/chunks/92-89319faac02cd299.js",
+      "static/chunks/297-4d346c8c65618d47.js",
+      "static/chunks/pages/index-dea719f5c68374a5.js"
     ],
     "/_app": [
       "static/chunks/webpack-39ffa8893d47309f.js",
       "static/chunks/framework-64ad27b21261a9ce.js",
       "static/chunks/main-0933411d6fd59fa1.js",
-      "static/css/f397afb71a6cbabe.css",
+      "static/css/b20e560510249838.css",
       "static/chunks/pages/_app-f7673b03be7f85fa.js"
     ],
     "/_error": [
@@ -56,7 +58,8 @@
       "static/chunks/framework-64ad27b21261a9ce.js",
       "static/chunks/main-0933411d6fd59fa1.js",
       "static/chunks/92-89319faac02cd299.js",
-      "static/chunks/pages/design-system-07a8c0ffc389ce63.js"
+      "static/chunks/111-f35b2ae919d65b5b.js",
+      "static/chunks/pages/design-system-d163ddd4432eb4fc.js"
     ],
     "/fundraising": [
       "static/chunks/webpack-39ffa8893d47309f.js",
@@ -87,6 +90,13 @@
       "static/chunks/main-0933411d6fd59fa1.js",
       "static/chunks/996-1b55609011aad234.js",
       "static/chunks/pages/marketing-96ee9d5a25c8f78d.js"
+    ],
+    "/metabox": [
+      "static/chunks/webpack-39ffa8893d47309f.js",
+      "static/chunks/framework-64ad27b21261a9ce.js",
+      "static/chunks/main-0933411d6fd59fa1.js",
+      "static/chunks/472-ceecf528cbeb8189.js",
+      "static/chunks/pages/metabox-1e4c8358edec1316.js"
     ],
     "/product": [
       "static/chunks/webpack-39ffa8893d47309f.js",

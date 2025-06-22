@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { MetaBox, META_BOX_TEMPLATES, MetaBoxType } from '../models/MetaBox';
+import { MetaBox, META_BOX_TEMPLATES, MetaBoxType, MetaBoxPhase, MetaBoxTemplate } from '../models/MetaBox';
 import { MetaBoxEditor } from '../components/metabox/MetaBoxEditor';
 import { MetaBoxWorkspace } from '../components/metabox/MetaBoxWorkspace';
 
@@ -53,11 +53,11 @@ const MetaBoxPage: React.FC<MetaBoxPageProps> = ({ user }) => {
         owner_id: user.id
       });
 
-      // Apply template phases
-      newMetaBox.applyTemplate({
+      // Create a proper MetaBoxTemplate instance
+      const templateInstance = new MetaBoxTemplate({
         name: template.name,
         description: template.description,
-        phases: template.default_phases.map((phaseName, index) => ({
+        phases: template.default_phases.map((phaseName, index) => new MetaBoxPhase({
           id: `phase_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
           name: phaseName,
           order: index + 1,
@@ -67,6 +67,9 @@ const MetaBoxPage: React.FC<MetaBoxPageProps> = ({ user }) => {
           updated_at: new Date().toISOString()
         }))
       });
+
+      // Apply template phases
+      newMetaBox.applyTemplate(templateInstance);
 
       const response = await fetch('/api/metabox', {
         method: 'POST',
@@ -236,19 +239,19 @@ const MetaBoxPage: React.FC<MetaBoxPageProps> = ({ user }) => {
       id: selectedMetaBox.id,
       name: selectedMetaBox.name,
       description: selectedMetaBox.description || '',
+      coreObjectType: 'CoreObject',
       phases: selectedMetaBox.phases.map(phase => ({
         id: phase.id,
         name: phase.name,
-        description: phase.description || '',
-        status: 'active',
-        order: phase.order
+        agentId: phase.agent_id || 'default-agent',
+        status: 'active' as const
       })),
       agents: [], // TODO: Add agents from the system
       fields: [
-        { key: 'name', label: 'Name', type: 'text', sortable: true },
-        { key: 'status', label: 'Status', type: 'status', sortable: true },
-        { key: 'priority', label: 'Priority', type: 'text', sortable: true },
-        { key: 'assignedAgent', label: 'Assigned Agent', type: 'agent', sortable: true }
+        { key: 'name', label: 'Name', type: 'string' as const, sortable: true },
+        { key: 'status', label: 'Status', type: 'status' as const, sortable: true },
+        { key: 'priority', label: 'Priority', type: 'string' as const, sortable: true },
+        { key: 'assignedAgent', label: 'Assigned Agent', type: 'agent' as const, sortable: true }
       ]
     };
 

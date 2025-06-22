@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1750485316584" clover="3.2.0">
-  <project timestamp="1750485316585" name="All files">
-    <metrics statements="3772" coveredstatements="32" conditionals="1734" coveredconditionals="30" methods="869" coveredmethods="5" elements="6375" coveredelements="67" complexity="0" loc="3772" ncloc="3772" packages="18" files="148" classes="148"/>
+<coverage generated="1750605142656" clover="3.2.0">
+  <project timestamp="1750605142656" name="All files">
+    <metrics statements="4178" coveredstatements="48" conditionals="1829" coveredconditionals="19" methods="957" coveredmethods="5" elements="6964" coveredelements="72" complexity="0" loc="4178" ncloc="4178" packages="21" files="173" classes="173"/>
     <package name="components">
       <metrics statements="160" coveredstatements="0" conditionals="36" coveredconditionals="0" methods="32" coveredmethods="0"/>
       <file name="AgentPanel.stories.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/AgentPanel.stories.tsx">
@@ -213,6 +213,236 @@
         <line num="41" count="0" type="stmt"/>
       </file>
     </package>
+    <package name="components.landing">
+      <metrics statements="173" coveredstatements="0" conditionals="11" coveredconditionals="0" methods="32" coveredmethods="0"/>
+      <file name="DemoCTA.stories.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/landing/DemoCTA.stories.tsx">
+        <metrics statements="11" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="50" count="0" type="stmt"/>
+      </file>
+      <file name="DemoCTA.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/landing/DemoCTA.tsx">
+        <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+      </file>
+      <file name="Footer.stories.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/landing/Footer.stories.tsx">
+        <metrics statements="11" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="50" count="0" type="stmt"/>
+      </file>
+      <file name="Footer.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/landing/Footer.tsx">
+        <metrics statements="13" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="91" count="0" type="stmt"/>
+        <line num="108" count="0" type="stmt"/>
+        <line num="125" count="0" type="stmt"/>
+        <line num="152" count="0" type="stmt"/>
+      </file>
+      <file name="Header.stories.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/landing/Header.stories.tsx">
+        <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+      </file>
+      <file name="Header.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/landing/Header.tsx">
+        <metrics statements="13" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="81" count="0" type="stmt"/>
+      </file>
+      <file name="Hero.stories.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/landing/Hero.stories.tsx">
+        <metrics statements="11" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="50" count="0" type="stmt"/>
+      </file>
+      <file name="Hero.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/landing/Hero.tsx">
+        <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+      </file>
+      <file name="IntegrationGrid.stories.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/landing/IntegrationGrid.stories.tsx">
+        <metrics statements="11" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="50" count="0" type="stmt"/>
+      </file>
+      <file name="IntegrationGrid.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/landing/IntegrationGrid.tsx">
+        <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="62" count="0" type="stmt"/>
+      </file>
+      <file name="PersonaCards.stories.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/landing/PersonaCards.stories.tsx">
+        <metrics statements="11" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="50" count="0" type="stmt"/>
+      </file>
+      <file name="PersonaCards.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/landing/PersonaCards.tsx">
+        <metrics statements="9" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="94" count="0" type="stmt"/>
+      </file>
+      <file name="Testimonials.stories.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/landing/Testimonials.stories.tsx">
+        <metrics statements="11" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="50" count="0" type="stmt"/>
+      </file>
+      <file name="Testimonials.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/landing/Testimonials.tsx">
+        <metrics statements="10" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="99" count="0" type="stmt"/>
+      </file>
+      <file name="ValuePropCards.stories.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/landing/ValuePropCards.stories.tsx">
+        <metrics statements="11" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="50" count="0" type="stmt"/>
+      </file>
+      <file name="ValuePropCards.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/landing/ValuePropCards.tsx">
+        <metrics statements="9" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="88" count="0" type="stmt"/>
+      </file>
+      <file name="WhatSetsCmdctrApart.stories.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/landing/WhatSetsCmdctrApart.stories.tsx">
+        <metrics statements="11" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="50" count="0" type="stmt"/>
+      </file>
+      <file name="WhatSetsCmdctrApart.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/landing/WhatSetsCmdctrApart.tsx">
+        <metrics statements="8" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="80" count="0" type="stmt"/>
+      </file>
+    </package>
     <package name="components.layout">
       <metrics statements="27" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="3" coveredmethods="0"/>
       <file name="AppLayout.stories.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/layout/AppLayout.stories.tsx">
@@ -256,7 +486,7 @@
       </file>
     </package>
     <package name="components.metabox">
-      <metrics statements="569" coveredstatements="0" conditionals="272" coveredconditionals="0" methods="181" coveredmethods="0"/>
+      <metrics statements="584" coveredstatements="0" conditionals="269" coveredconditionals="0" methods="184" coveredmethods="0"/>
       <file name="CoreObjectCard.stories.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/metabox/CoreObjectCard.stories.tsx">
         <metrics statements="9" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="3" count="0" type="stmt"/>
@@ -290,19 +520,31 @@
         <line num="120" count="0" type="stmt"/>
       </file>
       <file name="MetaBoxCoreObjectCard.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/metabox/MetaBoxCoreObjectCard.tsx">
-        <metrics statements="12" coveredstatements="0" conditionals="36" coveredconditionals="0" methods="6" coveredmethods="0"/>
+        <metrics statements="24" coveredstatements="0" conditionals="32" coveredconditionals="0" methods="7" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="cond" truecount="0" falsecount="9"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
         <line num="43" count="0" type="stmt"/>
-        <line num="79" count="0" type="stmt"/>
-        <line num="95" count="0" type="cond" truecount="0" falsecount="3"/>
-        <line num="96" count="0" type="stmt"/>
-        <line num="97" count="0" type="stmt"/>
-        <line num="120" count="0" type="stmt"/>
-        <line num="154" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="50" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="62" count="0" type="stmt"/>
+        <line num="63" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="118" count="0" type="stmt"/>
+        <line num="119" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="121" count="0" type="stmt"/>
+        <line num="150" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="158" count="0" type="stmt"/>
       </file>
       <file name="MetaBoxDetailPanel.stories.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/metabox/MetaBoxDetailPanel.stories.tsx">
         <metrics statements="16" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -354,20 +596,23 @@
         <line num="240" count="0" type="stmt"/>
       </file>
       <file name="MetaBoxEditor.stories.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/metabox/MetaBoxEditor.stories.tsx">
-        <metrics statements="13" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="16" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="2" count="0" type="stmt"/>
         <line num="3" count="0" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="69" count="0" type="stmt"/>
         <line num="77" count="0" type="stmt"/>
-        <line num="88" count="0" type="stmt"/>
-        <line num="145" count="0" type="stmt"/>
-        <line num="153" count="0" type="stmt"/>
-        <line num="161" count="0" type="stmt"/>
-        <line num="169" count="0" type="stmt"/>
-        <line num="177" count="0" type="stmt"/>
-        <line num="231" count="0" type="stmt"/>
+        <line num="85" count="0" type="stmt"/>
+        <line num="96" count="0" type="stmt"/>
+        <line num="107" count="0" type="stmt"/>
+        <line num="165" count="0" type="stmt"/>
+        <line num="223" count="0" type="stmt"/>
+        <line num="281" count="0" type="stmt"/>
+        <line num="312" count="0" type="stmt"/>
+        <line num="317" count="0" type="stmt"/>
       </file>
       <file name="MetaBoxEditor.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/metabox/MetaBoxEditor.tsx">
         <metrics statements="97" coveredstatements="0" conditionals="28" coveredconditionals="0" methods="28" coveredmethods="0"/>
@@ -906,7 +1151,7 @@
       </file>
     </package>
     <package name="components.ui">
-      <metrics statements="448" coveredstatements="32" conditionals="299" coveredconditionals="30" methods="76" coveredmethods="5"/>
+      <metrics statements="448" coveredstatements="0" conditionals="299" coveredconditionals="0" methods="76" coveredmethods="0"/>
       <file name="Accordion.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/ui/Accordion.tsx">
         <metrics statements="49" coveredstatements="0" conditionals="37" coveredconditionals="0" methods="10" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
@@ -977,29 +1222,29 @@
         <line num="120" count="0" type="stmt"/>
       </file>
       <file name="Avatar.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/ui/Avatar.tsx">
-        <metrics statements="22" coveredstatements="22" conditionals="13" coveredconditionals="13" methods="4" coveredmethods="4"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="29" count="32" type="stmt"/>
-        <line num="30" count="32" type="stmt"/>
-        <line num="32" count="32" type="stmt"/>
-        <line num="41" count="32" type="stmt"/>
-        <line num="47" count="32" type="stmt"/>
-        <line num="54" count="32" type="stmt"/>
-        <line num="63" count="32" type="stmt"/>
-        <line num="73" count="32" type="stmt"/>
-        <line num="74" count="1" type="stmt"/>
-        <line num="77" count="32" type="stmt"/>
-        <line num="78" count="1" type="stmt"/>
-        <line num="81" count="32" type="stmt"/>
-        <line num="82" count="32" type="cond" truecount="1" falsecount="0"/>
-        <line num="83" count="2" type="stmt"/>
-        <line num="86" count="30" type="cond" truecount="3" falsecount="0"/>
-        <line num="100" count="26" type="cond" truecount="1" falsecount="0"/>
-        <line num="101" count="25" type="stmt"/>
-        <line num="128" count="1" type="stmt"/>
-        <line num="130" count="30" type="stmt"/>
+        <metrics statements="22" coveredstatements="0" conditionals="13" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="77" count="0" type="stmt"/>
+        <line num="78" count="0" type="stmt"/>
+        <line num="81" count="0" type="stmt"/>
+        <line num="82" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="83" count="0" type="stmt"/>
+        <line num="86" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="100" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="101" count="0" type="stmt"/>
+        <line num="128" count="0" type="stmt"/>
+        <line num="130" count="0" type="stmt"/>
       </file>
       <file name="Badge.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/ui/Badge.tsx">
         <metrics statements="9" coveredstatements="0" conditionals="5" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -1209,17 +1454,17 @@
         <line num="114" count="0" type="stmt"/>
       </file>
       <file name="Progress.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/ui/Progress.tsx">
-        <metrics statements="10" coveredstatements="10" conditionals="17" coveredconditionals="17" methods="1" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="31" count="27" type="stmt"/>
-        <line num="33" count="27" type="stmt"/>
-        <line num="39" count="27" type="stmt"/>
-        <line num="47" count="27" type="stmt"/>
-        <line num="53" count="27" type="stmt"/>
-        <line num="93" count="1" type="stmt"/>
-        <line num="95" count="27" type="stmt"/>
+        <metrics statements="10" coveredstatements="0" conditionals="17" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="93" count="0" type="stmt"/>
+        <line num="95" count="0" type="stmt"/>
       </file>
       <file name="Tabs.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/ui/Tabs.tsx">
         <metrics statements="58" coveredstatements="0" conditionals="44" coveredconditionals="0" methods="11" coveredmethods="0"/>
@@ -1414,7 +1659,7 @@
       </file>
     </package>
     <package name="components.workspace">
-      <metrics statements="746" coveredstatements="0" conditionals="367" coveredconditionals="0" methods="200" coveredmethods="0"/>
+      <metrics statements="779" coveredstatements="0" conditionals="379" coveredconditionals="0" methods="217" coveredmethods="0"/>
       <file name="AgentActivityFeed.stories.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/workspace/AgentActivityFeed.stories.tsx">
         <metrics statements="8" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="3" count="0" type="stmt"/>
@@ -2180,6 +2425,42 @@
         <line num="247" count="0" type="stmt"/>
         <line num="248" count="0" type="stmt"/>
         <line num="284" count="0" type="stmt"/>
+      </file>
+      <file name="WorkflowBuilder.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/workspace/WorkflowBuilder.tsx">
+        <metrics statements="33" coveredstatements="0" conditionals="12" coveredconditionals="0" methods="17" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="44" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="45" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="77" count="0" type="stmt"/>
+        <line num="89" count="0" type="stmt"/>
+        <line num="94" count="0" type="stmt"/>
+        <line num="98" count="0" type="stmt"/>
+        <line num="99" count="0" type="stmt"/>
+        <line num="112" count="0" type="stmt"/>
       </file>
       <file name="WorkspaceLayout.stories.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/components/workspace/WorkspaceLayout.stories.tsx">
         <metrics statements="26" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="15" coveredmethods="0"/>
@@ -3023,7 +3304,7 @@
       </file>
     </package>
     <package name="models">
-      <metrics statements="116" coveredstatements="0" conditionals="55" coveredconditionals="0" methods="21" coveredmethods="0"/>
+      <metrics statements="119" coveredstatements="5" conditionals="55" coveredconditionals="0" methods="21" coveredmethods="0"/>
       <file name="Agent.ts" path="/Users/nicolasbaranowski/Documents/companyOS/models/Agent.ts">
         <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
@@ -3073,11 +3354,11 @@
         <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
       </file>
       <file name="MetaBox.ts" path="/Users/nicolasbaranowski/Documents/companyOS/models/MetaBox.ts">
-        <metrics statements="78" coveredstatements="0" conditionals="45" coveredconditionals="0" methods="21" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
-        <line num="61" count="0" type="stmt"/>
-        <line num="72" count="0" type="stmt"/>
-        <line num="82" count="0" type="stmt"/>
+        <metrics statements="78" coveredstatements="5" conditionals="45" coveredconditionals="0" methods="21" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="61" count="1" type="stmt"/>
+        <line num="72" count="1" type="stmt"/>
+        <line num="82" count="2" type="stmt"/>
         <line num="98" count="0" type="stmt"/>
         <line num="113" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="114" count="0" type="stmt"/>
@@ -3151,7 +3432,7 @@
         <line num="266" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="267" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="268" count="0" type="stmt"/>
-        <line num="273" count="0" type="stmt"/>
+        <line num="273" count="1" type="stmt"/>
       </file>
       <file name="Phase.ts" path="/Users/nicolasbaranowski/Documents/companyOS/models/Phase.ts">
         <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -3173,9 +3454,15 @@
         <line num="46" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="48" count="0" type="stmt"/>
       </file>
+      <file name="WorkflowEvent.ts" path="/Users/nicolasbaranowski/Documents/companyOS/models/WorkflowEvent.ts">
+        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="118" count="0" type="stmt"/>
+      </file>
     </package>
     <package name="pages">
-      <metrics statements="400" coveredstatements="0" conditionals="135" coveredconditionals="0" methods="145" coveredmethods="0"/>
+      <metrics statements="500" coveredstatements="0" conditionals="168" coveredconditionals="0" methods="173" coveredmethods="0"/>
       <file name="_app.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/pages/_app.tsx">
         <metrics statements="26" coveredstatements="0" conditionals="14" coveredconditionals="0" methods="5" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
@@ -3328,21 +3615,21 @@
         <line num="106" count="0" type="stmt"/>
         <line num="133" count="0" type="stmt"/>
         <line num="141" count="0" type="stmt"/>
-        <line num="158" count="0" type="stmt"/>
-        <line num="162" count="0" type="stmt"/>
-        <line num="182" count="0" type="stmt"/>
-        <line num="197" count="0" type="stmt"/>
-        <line num="213" count="0" type="stmt"/>
-        <line num="228" count="0" type="stmt"/>
-        <line num="410" count="0" type="stmt"/>
-        <line num="412" count="0" type="stmt"/>
-        <line num="445" count="0" type="stmt"/>
-        <line num="448" count="0" type="stmt"/>
-        <line num="524" count="0" type="stmt"/>
-        <line num="532" count="0" type="stmt"/>
-        <line num="533" count="0" type="stmt"/>
-        <line num="546" count="0" type="stmt"/>
-        <line num="553" count="0" type="stmt"/>
+        <line num="180" count="0" type="stmt"/>
+        <line num="184" count="0" type="stmt"/>
+        <line num="204" count="0" type="stmt"/>
+        <line num="219" count="0" type="stmt"/>
+        <line num="235" count="0" type="stmt"/>
+        <line num="250" count="0" type="stmt"/>
+        <line num="434" count="0" type="stmt"/>
+        <line num="436" count="0" type="stmt"/>
+        <line num="469" count="0" type="stmt"/>
+        <line num="472" count="0" type="stmt"/>
+        <line num="560" count="0" type="stmt"/>
+        <line num="568" count="0" type="stmt"/>
+        <line num="569" count="0" type="stmt"/>
+        <line num="582" count="0" type="stmt"/>
+        <line num="589" count="0" type="stmt"/>
       </file>
       <file name="fundraising.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/pages/fundraising.tsx">
         <metrics statements="32" coveredstatements="0" conditionals="14" coveredconditionals="0" methods="11" coveredmethods="0"/>
@@ -3414,15 +3701,20 @@
         <line num="372" count="0" type="stmt"/>
       </file>
       <file name="index.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/pages/index.tsx">
-        <metrics statements="8" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <metrics statements="13" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
         <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
         <line num="39" count="0" type="stmt"/>
-        <line num="130" count="0" type="stmt"/>
-        <line num="154" count="0" type="stmt"/>
       </file>
       <file name="login.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/pages/login.tsx">
         <metrics statements="16" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
@@ -3476,6 +3768,104 @@
         <line num="286" count="0" type="stmt"/>
         <line num="306" count="0" type="stmt"/>
         <line num="343" count="0" type="stmt"/>
+      </file>
+      <file name="metabox.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/pages/metabox.tsx">
+        <metrics statements="95" coveredstatements="0" conditionals="33" coveredconditionals="0" methods="30" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="33" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="38" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="40" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="79" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="80" count="0" type="stmt"/>
+        <line num="83" count="0" type="stmt"/>
+        <line num="84" count="0" type="stmt"/>
+        <line num="85" count="0" type="stmt"/>
+        <line num="86" count="0" type="stmt"/>
+        <line num="87" count="0" type="stmt"/>
+        <line num="89" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="93" count="0" type="stmt"/>
+        <line num="94" count="0" type="stmt"/>
+        <line num="95" count="0" type="stmt"/>
+        <line num="106" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="107" count="0" type="stmt"/>
+        <line num="110" count="0" type="stmt"/>
+        <line num="111" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="112" count="0" type="stmt"/>
+        <line num="113" count="0" type="stmt"/>
+        <line num="115" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="119" count="0" type="stmt"/>
+        <line num="120" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="121" count="0" type="stmt"/>
+        <line num="124" count="0" type="stmt"/>
+        <line num="125" count="0" type="stmt"/>
+        <line num="136" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="137" count="0" type="stmt"/>
+        <line num="140" count="0" type="stmt"/>
+        <line num="141" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="142" count="0" type="stmt"/>
+        <line num="143" count="0" type="stmt"/>
+        <line num="146" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="150" count="0" type="stmt"/>
+        <line num="151" count="0" type="stmt"/>
+        <line num="155" count="0" type="stmt"/>
+        <line num="156" count="0" type="stmt"/>
+        <line num="160" count="0" type="stmt"/>
+        <line num="161" count="0" type="stmt"/>
+        <line num="165" count="0" type="stmt"/>
+        <line num="166" count="0" type="stmt"/>
+        <line num="170" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="178" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="196" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="204" count="0" type="stmt"/>
+        <line num="205" count="0" type="stmt"/>
+        <line num="222" count="0" type="stmt"/>
+        <line num="223" count="0" type="stmt"/>
+        <line num="233" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="235" count="0" type="stmt"/>
+        <line num="239" count="0" type="stmt"/>
+        <line num="262" count="0" type="stmt"/>
+        <line num="263" count="0" type="stmt"/>
+        <line num="274" count="0" type="stmt"/>
+        <line num="304" count="0" type="stmt"/>
+        <line num="322" count="0" type="stmt"/>
+        <line num="324" count="0" type="stmt"/>
+        <line num="339" count="0" type="stmt"/>
+        <line num="360" count="0" type="stmt"/>
+        <line num="373" count="0" type="stmt"/>
+        <line num="392" count="0" type="stmt"/>
+        <line num="393" count="0" type="stmt"/>
+        <line num="404" count="0" type="stmt"/>
+        <line num="405" count="0" type="stmt"/>
+        <line num="415" count="0" type="stmt"/>
+        <line num="435" count="0" type="stmt"/>
       </file>
       <file name="product.tsx" path="/Users/nicolasbaranowski/Documents/companyOS/pages/product.tsx">
         <metrics statements="31" coveredstatements="0" conditionals="14" coveredconditionals="0" methods="12" coveredmethods="0"/>
@@ -3629,7 +4019,7 @@
       </file>
     </package>
     <package name="pages.api">
-      <metrics statements="66" coveredstatements="0" conditionals="28" coveredconditionals="0" methods="3" coveredmethods="0"/>
+      <metrics statements="83" coveredstatements="0" conditionals="35" coveredconditionals="0" methods="6" coveredmethods="0"/>
       <file name="audit-logs.ts" path="/Users/nicolasbaranowski/Documents/companyOS/pages/api/audit-logs.ts">
         <metrics statements="28" coveredstatements="0" conditionals="16" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="3" count="0" type="stmt"/>
@@ -3701,6 +4091,26 @@
         <line num="105" count="0" type="stmt"/>
         <line num="107" count="0" type="stmt"/>
         <line num="108" count="0" type="stmt"/>
+      </file>
+      <file name="workflows.ts" path="/Users/nicolasbaranowski/Documents/companyOS/pages/api/workflows.ts">
+        <metrics statements="17" coveredstatements="0" conditionals="7" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="9" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="10" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="14" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="20" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
       </file>
     </package>
     <package name="pages.api.agents">
@@ -4070,8 +4480,30 @@
         <line num="62" count="0" type="stmt"/>
       </file>
     </package>
+    <package name="pages.api.integrations">
+      <metrics statements="13" coveredstatements="0" conditionals="7" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <file name="health.ts" path="/Users/nicolasbaranowski/Documents/companyOS/pages/api/integrations/health.ts">
+        <metrics statements="3" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="5" count="0" type="stmt"/>
+      </file>
+      <file name="webhook.ts" path="/Users/nicolasbaranowski/Documents/companyOS/pages/api/integrations/webhook.ts">
+        <metrics statements="10" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="9" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="10" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+      </file>
+    </package>
     <package name="pages.api.metabox">
-      <metrics statements="120" coveredstatements="0" conditionals="44" coveredconditionals="0" methods="8" coveredmethods="0"/>
+      <metrics statements="166" coveredstatements="43" conditionals="70" coveredconditionals="19" methods="10" coveredmethods="5"/>
       <file name="[id].ts" path="/Users/nicolasbaranowski/Documents/companyOS/pages/api/metabox/[id].ts">
         <metrics statements="78" coveredstatements="0" conditionals="28" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
@@ -4154,49 +4586,95 @@
         <line num="169" count="0" type="stmt"/>
       </file>
       <file name="index.ts" path="/Users/nicolasbaranowski/Documents/companyOS/pages/api/metabox/index.ts">
-        <metrics statements="42" coveredstatements="0" conditionals="16" coveredconditionals="0" methods="4" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="10" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="22" count="0" type="cond" truecount="0" falsecount="3"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="33" count="0" type="cond" truecount="0" falsecount="3"/>
+        <metrics statements="88" coveredstatements="43" conditionals="42" coveredconditionals="19" methods="6" coveredmethods="5"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="13" type="stmt"/>
+        <line num="8" count="13" type="cond" truecount="2" falsecount="0"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="10" type="cond" truecount="2" falsecount="0"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="12" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="14" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="23" count="3" type="stmt"/>
+        <line num="24" count="3" type="stmt"/>
+        <line num="26" count="3" type="cond" truecount="3" falsecount="0"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
         <line num="35" count="0" type="stmt"/>
-        <line num="41" count="0" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="46" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="53" count="0" type="stmt"/>
-        <line num="58" count="0" type="stmt"/>
-        <line num="59" count="0" type="stmt"/>
-        <line num="61" count="0" type="cond" truecount="0" falsecount="3"/>
-        <line num="62" count="0" type="stmt"/>
-        <line num="66" count="0" type="stmt"/>
-        <line num="67" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="68" count="0" type="stmt"/>
-        <line num="74" count="0" type="stmt"/>
-        <line num="75" count="0" type="stmt"/>
-        <line num="76" count="0" type="stmt"/>
+        <line num="37" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="56" count="2" type="stmt"/>
+        <line num="57" count="2" type="stmt"/>
+        <line num="62" count="3" type="stmt"/>
+        <line num="63" count="3" type="stmt"/>
+        <line num="65" count="3" type="cond" truecount="3" falsecount="0"/>
+        <line num="66" count="1" type="stmt"/>
+        <line num="70" count="2" type="stmt"/>
+        <line num="71" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="72" count="2" type="stmt"/>
+        <line num="78" count="0" type="stmt"/>
         <line num="79" count="0" type="stmt"/>
-        <line num="85" count="0" type="stmt"/>
-        <line num="87" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="88" count="0" type="stmt"/>
-        <line num="94" count="0" type="stmt"/>
-        <line num="97" count="0" type="stmt"/>
+        <line num="80" count="0" type="stmt"/>
+        <line num="83" count="0" type="stmt"/>
+        <line num="89" count="0" type="stmt"/>
+        <line num="91" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="92" count="0" type="stmt"/>
         <line num="98" count="0" type="stmt"/>
+        <line num="101" count="0" type="stmt"/>
+        <line num="102" count="0" type="stmt"/>
+        <line num="107" count="3" type="stmt"/>
+        <line num="108" count="3" type="stmt"/>
+        <line num="110" count="3" type="cond" truecount="2" falsecount="1"/>
+        <line num="111" count="0" type="stmt"/>
+        <line num="114" count="3" type="stmt"/>
+        <line num="115" count="3" type="stmt"/>
+        <line num="116" count="0" type="stmt"/>
+        <line num="119" count="0" type="stmt"/>
+        <line num="120" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="121" count="0" type="stmt"/>
+        <line num="124" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="125" count="0" type="stmt"/>
+        <line num="129" count="0" type="stmt"/>
+        <line num="130" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="131" count="0" type="stmt"/>
+        <line num="138" count="0" type="stmt"/>
+        <line num="149" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="151" count="0" type="stmt"/>
+        <line num="152" count="0" type="cond" truecount="0" falsecount="5"/>
+        <line num="153" count="0" type="stmt"/>
+        <line num="159" count="0" type="stmt"/>
+        <line num="162" count="0" type="stmt"/>
+        <line num="165" count="3" type="stmt"/>
+        <line num="166" count="3" type="stmt"/>
+        <line num="171" count="3" type="stmt"/>
+        <line num="172" count="3" type="stmt"/>
+        <line num="174" count="3" type="cond" truecount="2" falsecount="1"/>
+        <line num="175" count="0" type="stmt"/>
+        <line num="178" count="3" type="stmt"/>
+        <line num="179" count="3" type="stmt"/>
+        <line num="180" count="0" type="stmt"/>
+        <line num="183" count="0" type="stmt"/>
+        <line num="184" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="185" count="0" type="stmt"/>
+        <line num="188" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="189" count="0" type="stmt"/>
+        <line num="193" count="0" type="stmt"/>
+        <line num="195" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="196" count="0" type="stmt"/>
+        <line num="201" count="0" type="stmt"/>
+        <line num="204" count="3" type="stmt"/>
+        <line num="205" count="3" type="stmt"/>
       </file>
     </package>
     <package name="pages.api.phases">
@@ -4270,6 +4748,18 @@
         <line num="51" count="0" type="stmt"/>
         <line num="54" count="0" type="stmt"/>
         <line num="55" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="pages.api.workflows">
+      <metrics statements="6" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="execute.ts" path="/Users/nicolasbaranowski/Documents/companyOS/pages/api/workflows/execute.ts">
+        <metrics statements="6" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
       </file>
     </package>
   </project>
